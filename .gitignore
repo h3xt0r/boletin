@@ -4,5 +4,9 @@
 *.out
 *.toc
 
+# Generados (se regeneran con `make`; no se versionan para ahorrar espacio)
+*.pdf
+*.svg
+
 # Sistema
 .DS_Store

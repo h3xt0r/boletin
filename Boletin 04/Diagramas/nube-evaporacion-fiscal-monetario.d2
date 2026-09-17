@@ -1,0 +1,52 @@
+# Nube de Evaporación del Conflicto (Evaporating Cloud)
+# Boletín IES 04 - Termodinámica Financiera (2026-09-11)
+# El Conflicto Fiscal vs. Monetario
+#
+# El árbol crece hacia abajo (direction: down). Se fija el motor TALA
+# (único que permite posicionar con top/left); así B/C quedan en un mismo
+# nivel y D/D' en otro, con el conflicto trazado horizontalmente entre ambos.
+
+vars: {
+  d2-config: {
+    layout-engine: tala
+  }
+}
+
+direction: down
+
+A: "Objetivo (\$O\$):\nEstabilidad Económica Sistemática" {
+  top: 0
+  left: 286
+}
+
+B: "Requisito A:\nMantener la solvencia del mercado de deuda\nsoberana y la liquidez del Tesoro" {
+  top: 200
+  left: 0
+}
+
+C: "Requisito B:\nPreservar el poder adquisitivo\nde la moneda y contener la inflación" {
+  top: 200
+  left: 540
+}
+
+D: "Prerrequisito A':\nRecomprar deuda / monetizar el déficit\n(QE o Buybacks masivos)" {
+  top: 400
+  left: 0
+}
+
+"D'": "Prerrequisito B':\nMantener tasas de interés elevadas\ny restringir la hoja de balance\ndel Banco Central" {
+  top: 400
+  left: 540
+}
+
+A -> B
+A -> C
+B -> D
+C -> "D'"
+
+# Conflicto sistémico entre las acciones D y D'
+D <-> "D'": "CONFLICTO\nFISCAL vs. MONETARIO" {
+  style.stroke: "#e53935"
+  style.stroke-dash: 4
+  style.font-color: "#e53935"
+}

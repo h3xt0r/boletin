@@ -1,0 +1,234 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[letterpaper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+% Ajustes de calidad editorial para los boletines IES.
+% Se incluyen con: pandoc --include-in-header=assets/editorial.tex
+% Nota: pandoc ya carga `microtype` automáticamente si está disponible,
+% por eso aquí solo se afinan los pies de figura.
+\usepackage{caption}     % control de los pies de figura
+\captionsetup{font=small, labelfont=bf}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdflang={es},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{termodinuxe1mica-financiera-05-boletuxedn-toc-insights}{%
+\section{TERMODINÁMICA FINANCIERA 05: BOLETÍN TOC
+INSIGHTS}\label{termodinuxe1mica-financiera-05-boletuxedn-toc-insights}}
+
+\textbf{Análisis Sistémico de PEMEX: La Propuesta de Escisión bajo la
+Teoría de Restricciones}
+
+\href{https://es-us.noticias.yahoo.com/proponen-escindir-pemex-negocios-deficitarios-050356273.html}{Escindir
+Pemex}
+
+\hypertarget{titular-y-resumen-ejecutivo}{%
+\subsubsection{1. Titular y Resumen
+Ejecutivo}\label{titular-y-resumen-ejecutivo}}
+
+La propuesta analizada por \emph{El Economista} de escindir los negocios
+deficitarios de Petróleos Mexicanos (PEMEX) evalúa a la empresa bajo los
+dogmas de la contabilidad de costos corporativa privada. Desde la
+perspectiva de la Teoría de Restricciones (TOC), desmembrar la
+infraestructura petrolera ignorando su función sistémica como
+amortiguador macroeconómico destruye el \textbf{Throughput} real del
+país, confundiendo la optimización contable aislada con la maximización
+de la soberanía y el bienestar social.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{diagnuxf3stico-del-sistema-seguxfan-toc}{%
+\subsubsection{2. Diagnóstico del Sistema según
+TOC}\label{diagnuxf3stico-del-sistema-seguxfan-toc}}
+
+\begin{itemize}
+\item
+  \textbf{Restricción del Sistema (Cuello de Botella):} El verdadero
+  cuello de botella no radica en la existencia de negocios secundarios,
+  sino en una restricción dual: la insuficiencia de inversión focalizada
+  en la exploración rentable combinada con un flujo de caja estrangulado
+  por compromisos fiscales e ineficiencias logísticas.
+\item
+  \textbf{Parámetros Clave del Sistema:}
+\item
+  \textbf{Throughput (\(T\)):} El valor energético y estabilidad
+  macroeconómica provistos al aparato productivo nacional para blindarlo
+  frente a choques externos (como crisis geopolíticas).
+\item
+  \textbf{Inversión / Inventario (\(I\)):} Activos físicos (refinerías,
+  pozos, red logística) y la deuda financiera consolidada.
+\item
+  \textbf{Gasto de Operación (\(OE\)):} Costos operativos, nómina y
+  mantenimiento necesarios para sostener el andamiaje corporativo y
+  operativo.
+\item
+  \textbf{Nube de Evaporación del Conflicto:}
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Diagramas/nube-evaporacion-pemex.pdf}
+\caption{Nube de Evaporación del Conflicto}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}{%
+\subsubsection{3. Dicotomía Clave 1: Contabilidad de Costos Tradicional
+vs.~Contabilidad del Throughput
+(TA)}\label{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión de la Contabilidad de Costos Tradicional:} Analiza las
+  refinerías o los complejos petroquímicos de forma fragmentada. Si una
+  unidad presenta pérdidas contables o márgenes negativos, exige su
+  escisión, venta o cierre para ``mejorar el EBITDA'' y reducir costos
+  por unidad.
+\item
+  \textbf{Visión de la Contabilidad del Throughput (TA):} Reconoce que
+  recortar componentes operativos locales bajo el pretexto de eficiencia
+  aislada puede colapsar el flujo global de valor. Un activo con
+  aparente déficit contable puede funcionar como el amortiguador
+  indispensable que protege el \emph{Throughput} sistémico de toda la
+  economía nacional frente a la volatilidad de precios internacionales.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}{%
+\subsubsection{4. Dicotomía Clave 2: Teoría Monetaria Moderna (MMT)
+vs.~Teoría de Restricciones
+(TOC)}\label{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión MMT:} Al tratarse de un Estado con soberanía monetaria,
+  las restricciones financieras nominales son secundarias; los apoyos
+  fiscales o déficits en PEMEX no están limitados por ingresos
+  tributarios previos, sino por la capacidad real de recursos y el
+  riesgo inflacionario resultante.
+\item
+  \textbf{Visión TOC:} El dinero es meramente un medio de facilitación;
+  la restricción fundamental es física y operativa. Incluso con
+  soberanía monetaria, si la capacidad de extracción y refinación (la
+  restricción real del sistema energético) está subfinanciada o mal
+  coordinada por desvíos de recursos hacia el pago de deuda o gasto
+  corriente en lugar de pozos productivos, la creación de dinero o
+  transferencias fiscales solo incrementan el inventario financiero
+  (\(I\)) y generan ruido inflacionario sin acelerar el flujo físico de
+  bienestar.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}{%
+\subsubsection{5. Conclusión y Prescripción Estratégica (5 Pasos de
+Enfoque de
+Goldratt)}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Identificar la Restricción:} Reconocer que el cuello de
+  botella no es la amplitud de la empresa pública, sino la distorsión en
+  la asignación de recursos (dinero destinado a sanear pasivos o deuda
+  en lugar de elevar la capacidad de los campos rentables).
+\item
+  \textbf{Explotar la Restricción:} Maximizar la eficiencia operativa de
+  los activos actuales de extracción y refinación para asegurar el
+  suministro interno frente a la volatilidad geopolítica.
+\item
+  \textbf{Subordinar el Resto del Sistema:} Alinear los esquemas
+  fiscales y las transferencias gubernamentales para que no estrangulen
+  la liquidez operativa indispensable de la empresa.
+\item
+  \textbf{Elevar la Restricción:} Inyectar capital de inversión (\(I\))
+  de manera directa en la perforación y modernización tecnológica de los
+  campos de alta productividad, ampliando la capacidad del amortiguador
+  energético.
+\item
+  \textbf{Prevenir la Inercia:} Evitar la aplicación ciega de dogmas
+  corporativos privados que dictan la fragmentación de empresas
+  estatales sin evaluar el impacto sistémico sobre la estabilidad
+  macroeconómica y el bienestar social.
+\end{enumerate}
+
+\end{document}
