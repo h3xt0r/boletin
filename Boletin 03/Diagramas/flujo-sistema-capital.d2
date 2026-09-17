@@ -1,0 +1,31 @@
+# Flujo del Sistema de Asignación de Capital Global
+# Boletín IES 03 - Termodinámica Financiera (2026-09-10)
+#
+# Diagrama de flujo vertical: el sistema recibe insumos de crédito, los
+# convierte en inventario (I) y desemboca en el Throughput Real (T), que es
+# hoy el cuello de botella (bloqueado).
+
+direction: down
+
+Sistema: "SISTEMA DE ASIGNACIÓN DE CAPITAL GLOBAL" {
+  Insumos: "Insumos de Crédito\n(Mercado de Bonos)"
+  I: "I: GPUs / Centros Datos\n(95% Subutilizado / OE Alto)"
+  Insumos -> I
+}
+
+T: "Throughput Real (T)\nMonetización en Mercado" {
+  style.stroke-width: 3
+}
+
+Sistema -> T: "CUELLO DE BOTELLA ACTUAL"
+
+Bloqueo: "¡BLOQUEADO!" {
+  style.stroke: "#e53935"
+  style.font-color: "#e53935"
+  style.stroke-dash: 4
+}
+
+Bloqueo -> T: {
+  style.stroke: "#e53935"
+  style.stroke-dash: 4
+}

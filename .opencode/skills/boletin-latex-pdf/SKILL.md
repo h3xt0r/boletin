@@ -38,7 +38,7 @@ PDF tamaño carta con el motor `pdflatex` (usa `<Boletin NN>/<archivo>.md`):
 
 ```bash
 pandoc "<Boletin NN>/<archivo>.md" \
-  --from=markdown-tex_math_dollars \
+  --from=markdown+tex_math_dollars \
   --resource-path="<Boletin NN>" \
   --pdf-engine=pdflatex \
   -V geometry:letterpaper -V geometry:margin=2.5cm \
@@ -51,7 +51,7 @@ Documento LaTeX standalone:
 
 ```bash
 pandoc "<Boletin NN>/<archivo>.md" \
-  --from=markdown-tex_math_dollars --resource-path="<Boletin NN>" \
+  --from=markdown+tex_math_dollars --resource-path="<Boletin NN>" \
   -s -t latex --pdf-engine=pdflatex \
   -V geometry:letterpaper -V geometry:margin=2.5cm \
   -V fontsize=11pt -V lang=es \
@@ -64,8 +64,10 @@ en el directorio del boletín.
 
 ## Claves de calidad editorial
 
-- **`--from=markdown-tex_math_dollars`**: desactiva el modo matemático de `$` para
-  que los importes (`$160 billones`) no se interpreten como fórmulas.
+- **`--from=markdown+tex_math_dollars`**: activa el modo matemático de `$` para las
+  variables (`$I$`, `$T$`, `$\neq$`). Pandoc no confunde los importes
+  (`$160 billones`, `$30,000–$40,000`): un `$` de cierre seguido de dígito no
+  cierra la fórmula, así que esos montos quedan literales.
 - **`--resource-path`**: resuelve las imágenes relativas al directorio del boletín.
 - **Tamaño carta**: `-V geometry:letterpaper -V geometry:margin=2.5cm`.
 - **Idioma**: `-V lang=es` (títulos y pies en español).

@@ -1,0 +1,52 @@
+# Nube de Evaporación del Conflicto (Evaporating Cloud)
+# Boletín IES 03 - Termodinámica Financiera (2026-09-10)
+#
+# El árbol crece hacia abajo (direction: down) para aprovechar el alto de una
+# hoja carta. Se fija el motor TALA (único que permite posicionar con top/left);
+# así B/C quedan en un mismo nivel y D/D' en otro, con el conflicto trazado
+# horizontalmente entre ambos.
+
+vars: {
+  d2-config: {
+    layout-engine: tala
+  }
+}
+
+direction: down
+
+A: "Garantizar la Supervivencia\ny Retorno de Capital" {
+  top: 0
+  left: 372
+}
+
+B: "Maximizar Valoración y Multiplicadores\na Futuro (Narrativa de Crecimiento)" {
+  top: 200
+  left: 0
+}
+
+C: "Garantizar Solvencia, Liquidez\ny Cobertura de Deuda (Protección)" {
+  top: 200
+  left: 640
+}
+
+D: "Invertir agresivamente en CAPEX de IA\n(Apalancamiento / Acumulación de I)" {
+  top: 400
+  left: 0
+}
+
+"D'": "Rotar capital hacia empresas de\nThroughput Real y Desapalancadas (Valor)" {
+  top: 400
+  left: 640
+}
+
+A -> B
+A -> C
+B -> D
+C -> "D'"
+
+# Conflicto sistémico entre las acciones D y D'
+D <-> "D'": "CONFLICTO\nSISTÉMICO" {
+  style.stroke: "#e53935"
+  style.stroke-dash: 4
+  style.font-color: "#e53935"
+}

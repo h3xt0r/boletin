@@ -48,7 +48,7 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
    - En el `.md`, referencia cada diagrama como `Diagramas/<nombre>.pdf` (ruta
      relativa al directorio del boletín) y quita el bloque ` ```text `. Sin `{width}`.
    - Compila con pandoc (`pdflatex`, `letterpaper`, `lang=es`,
-     `--from=markdown-tex_math_dollars`). El script añade `--resource-path` con el
+     `--from=markdown+tex_math_dollars`). El script añade `--resource-path` con el
      directorio del boletín.
    - Genera también el `.tex` standalone.
 
