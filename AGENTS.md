@@ -10,7 +10,8 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
 
 ## Objetivo de cada boletín
 
-1. Convertir los diagramas de texto a **D2** (`Boletin NN/Diagramas/*.d2`).
+1. Convertir los diagramas del boletín (bloques ` ```text ` o ` ```d2 `) a **D2**
+   (`Boletin NN/Diagramas/*.d2`).
 2. Renderizar cada diagrama a **SVG** y exportarlo a **PDF vectorial** (0 raster).
 3. Incrustar los diagramas en el Markdown como imágenes PDF.
 4. Compilar el boletín a **PDF tamaño carta** (y a `.tex`) con pandoc + LaTeX.
@@ -38,7 +39,11 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
 ## Flujo de trabajo
 
 1. **Diagramas** — carga la skill `diagramas-d2-pdf`:
-   - Traduce cada bloque de texto a `Boletin NN/Diagramas/<nombre>.d2`. Usa
+   - Si el boletín trae bloques ` ```d2 `, ejecuta
+     `.opencode/skills/diagramas-d2-pdf/scripts/extraer-d2.sh "<Boletin NN>/<archivo>.md"`:
+     numera `Diagramas/figura-<N>.d2`, valida la compilación con `d2`, escapa el `$`
+     suelto de las etiquetas y sustituye cada bloque por `![<pie>](Diagramas/figura-<N>.pdf)`.
+   - Si trae bloques ` ```text `, tradúcelos a `Boletin NN/Diagramas/<nombre>.d2`. Usa
      `direction: down` para orientación vertical; en nubes de evaporación usa el
      motor **TALA** con `top`/`left` para evitar el escalonamiento de `dagre`/`elk`.
    - `d2 "Boletin NN/Diagramas/<nombre>.d2" "Boletin NN/Diagramas/<nombre>.svg"`

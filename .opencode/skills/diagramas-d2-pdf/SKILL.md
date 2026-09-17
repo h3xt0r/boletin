@@ -25,8 +25,10 @@ texto que traen los boletines en Markdown. Cada boletín guarda sus diagramas en
 
 ## Flujo
 
-1. **Localizar el diagrama de texto** en el `.md` (bloque ` ```text `).
-2. **Traducirlo a D2** y guardarlo en `Boletin NN/Diagramas/<nombre>.d2`.
+1. **Localizar los diagramas** en el `.md`:
+   - Bloques ` ```d2 `: se extraen automáticamente (intake directo, ver más abajo).
+   - Bloques ` ```text `: se traducen a D2 (ver *Traducción de diagramas de texto a D2*).
+2. **Obtener el `.d2`** en `Boletin NN/Diagramas/` (extracción automática o traducción).
 3. **Renderizar el SVG:**
    ```bash
    d2 "Boletin NN/Diagramas/<nombre>.d2" "Boletin NN/Diagramas/<nombre>.svg"
@@ -36,9 +38,29 @@ texto que traen los boletines en Markdown. Cada boletín guarda sus diagramas en
    mutool convert -F pdf -o "Boletin NN/Diagramas/<nombre>.pdf" "Boletin NN/Diagramas/<nombre>.svg"
    ```
 
-Atajo: `scripts/d2-to-pdf.sh "Boletin NN/Diagramas/<nombre>.d2"` ejecuta los pasos 3
-y 4 y verifica. El motor por defecto es `mutool`; usa `D2PDF_ENGINE=rsvg` para
-`rsvg-convert`.
+Atajos:
+- `scripts/d2-to-pdf.sh "Boletin NN/Diagramas/<nombre>.d2"` ejecuta los pasos 3
+  y 4 y verifica. El motor por defecto es `mutool`; usa `D2PDF_ENGINE=rsvg` para
+  `rsvg-convert`.
+- `scripts/extraer-d2.sh "<Boletin NN>/<archivo>.md"` extrae los bloques ` ```d2 `
+  del Markdown a `Diagramas/figura-<N>.d2` y sustituye cada bloque por su imagen.
+
+## Intake directo: bloques ```d2 en el Markdown
+
+Cuando el boletín trae los diagramas ya escritos en d2lang, no hace falta
+traducirlos: `scripts/extraer-d2.sh` hace el resto.
+
+- Detecta todos los bloques fenced con lenguaje `d2`, en orden de aparición.
+- Nombra cada uno `Boletin NN/Diagramas/figura-<N>.d2` (numeración automática
+  1, 2, …).
+- **Pie de figura:** primera línea de comentario (`# Título`) del bloque o, si no
+  hay, la primera etiqueta de nodo (con `\n` como espacio).
+- Sustituye el bloque completo por `![<pie>](Diagramas/figura-<N>.pdf)`.
+- **Valida antes de tocar nada:** cada bloque debe compilar con `d2`; si uno
+  falla, aborta y avisa (revisa la sintaxis del bloque en el `.md`).
+- **Escapa `$`** sueltos dentro de las etiquetas (`\$`) para que d2 los trate
+  como literales (montos `$6,000M` y variables `$T$`, `$O$`, …).
+- Si el `.md` no trae bloques ` ```d2 `, no hace nada (compatible con ` ```text `).
 
 ## Traducción de diagramas de texto a D2
 

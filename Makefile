@@ -21,6 +21,7 @@ BOLETIN ?= $(shell ls -d Boletin* 2>/dev/null | sort -V | tail -1)
 
 DIAGRAMAS_SCRIPT := .opencode/skills/diagramas-d2-pdf/scripts/d2-to-pdf.sh
 BOLETIN_SCRIPT   := .opencode/skills/boletin-latex-pdf/scripts/build-boletin.sh
+SKILLS_SCRIPTS   := $(dir $(DIAGRAMAS_SCRIPT))
 
 # Fuente del boletín: el .md de boletín más reciente dentro de BOLETIN.
 SRC ?= $(shell ls -t "$(BOLETIN)"/*[Bb]oletin*.md 2>/dev/null | head -1)
@@ -35,7 +36,10 @@ ayuda:
 	@echo "make limpiar                      # borra .svg y .pdf de <BOLETIN>/Diagramas/"
 
 diagramas:
-	@if [[ ! -d "$(BOLETIN)/Diagramas" ]]; then echo "No existe '$(BOLETIN)/Diagramas/'"; exit 0; fi
+	@EXTRAER="$(SKILLS_SCRIPTS)extraer-d2.sh"; \
+	if [[ ! -x "$$EXTRAER" ]]; then echo "Error: falta '$$EXTRAER'" >&2; exit 1; fi; \
+	"$$EXTRAER" "$(SRC)"
+	@if [[ ! -d "$(BOLETIN)/Diagramas" ]]; then echo "No hay diagramas en '$(BOLETIN)/Diagramas/'"; exit 0; fi
 	@find "$(BOLETIN)/Diagramas" -maxdepth 1 -name '*.d2' -exec "$(DIAGRAMAS_SCRIPT)" {} \;
 
 boletin:
