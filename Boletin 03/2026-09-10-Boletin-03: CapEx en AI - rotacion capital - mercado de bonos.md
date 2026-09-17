@@ -28,7 +28,7 @@ El éxodo de capital desde las Megacaps tecnológicas hiperapalancadas hacia sec
 ### Impacto en los 3 Parámetros Clave de Goldratt
 
 * **Throughput ($T$):** Estancado en el sector tecnológico. El valor de los tokens y el costo de la hora de GPU caen en los mercados secundarios mientras las ventas finales a clientes corporativos tardan en materializarse. Por el contrario, los sectores tradicionales (bancos, retail, salud) mantienen un $T$ recurrente e instantáneo.
-* **Inversión / Inventario ($I$):** Hiperextendido. Miles de millones de dólares en hardware de IA comprados a precios inflados ($30,000–$40,000 USD por GPU) actúan como un **Inventario congelado** con una tasa de depreciación y obsolescencia técnica devastadora (18 a 24 meses).
+* **Inversión / Inventario ($I$):** Hiperextendido. Miles de millones de dólares en hardware de IA comprados a precios inflados (\$30,000–\$40,000 USD por GPU) actúan como un **Inventario congelado** con una tasa de depreciación y obsolescencia técnica devastadora (18 a 24 meses).
 * **Gasto de Operación ($OE$):** Disparado. El costo del servicio de la deuda emitido en el mercado de bonos, sumado a los costos fijos de energía, mantenimiento, licencias y refrigeración líquida para mantener activo el 95% del hardware subutilizado, está erosionando el margen neto.
 
 ---

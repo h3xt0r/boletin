@@ -55,6 +55,10 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
    - Compila con pandoc (`pdflatex`, `letterpaper`, `lang=es`,
      `--from=markdown+tex_math_dollars`). El script añade `--resource-path` con el
      directorio del boletín.
+   - **Escapa SIEMPRE los importes en dólares del `.md` como `\$`** (`\$6,000M`,
+     `\$160 billones`); `$...$` queda reservado para variables (`$T$`, `$I$`,
+     `$OE$`). Un `$` suelto puede cerrarse con cualquier `$` posterior válido del
+     mismo párrafo y volver matemático todo el texto intermedio (caso Boletín 04).
    - Genera también el `.tex` standalone.
 
 ### Atajos con make
@@ -82,8 +86,9 @@ make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas
 ## Verificación obligatoria antes de entregar
 
 - `pdfinfo <salida>.pdf` → `612 x 792 pts (letter)`.
-- `pdftotext -layout <salida>.pdf -` → acentos y cifras (`$160 billones`) correctos
-  y el diagrama como `Figura 1: ...` (texto seleccionable = contenido vectorial).
+- `pdftotext -layout <salida>.pdf -` → acentos y cifras literales (los `\$` del
+  `.md` aparecen como `$` en el PDF, p. ej. `$6,000M`, `$160 billones`) y el
+  diagrama como `Figura 1: ...` (texto seleccionable = contenido vectorial).
 - `pdfimages -list <salida>.pdf` → **0 imágenes raster** (diagrama 100 % vectorial,
   gracias a `mutool`). Si se usara `rsvg-convert`, aparecerían máscaras alfa de las
   cajas de los nodos.

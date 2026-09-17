@@ -54,9 +54,10 @@ while IFS= read -r img; do
 done < <(grep -oE '\]\([^)]+\.(pdf|svg|png)\)' "$src" | sed -E 's/^\]\(//; s/\)$//' || true)
 
 opciones=(
-  # Modo matemático activado: convierte $I$, $T$, $\neq$ en fórmulas, pero
-  # pandoc no confunde importes ($160 billones, $30,000–$40,000) porque un
-  # `$` de cierre seguido de dígito no cierra la fórmula.
+  # Modo matemático activado: convierte $I$, $T$, $\neq$ en fórmulas.
+  # Los importes en dólares van SIEMPRE escapados en el .md (\$6,000M,
+  # \$160 billones): un $ suelto puede cerrarse con un $ posterior válido
+  # y volver matemático el texto intermedio (caso Boletín 04).
   --from=markdown+tex_math_dollars
   --resource-path="$srcdir"
   -V geometry:letterpaper

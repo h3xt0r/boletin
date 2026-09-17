@@ -65,9 +65,10 @@ en el directorio del boletín.
 ## Claves de calidad editorial
 
 - **`--from=markdown+tex_math_dollars`**: activa el modo matemático de `$` para las
-  variables (`$I$`, `$T$`, `$\neq$`). Pandoc no confunde los importes
-  (`$160 billones`, `$30,000–$40,000`): un `$` de cierre seguido de dígito no
-  cierra la fórmula, así que esos montos quedan literales.
+  variables (`$I$`, `$T$`, `$\neq$`). **Los importes en dólares se escapan siempre**
+  (`\$160 billones`, `\$6,000M`, `\$30,000–\$40,000`): un `$` suelto puede cerrarse
+  con otro `$` válido más adelante en el párrafo y volver matemático todo lo de en
+  medio (caso real en Boletín 04 con `\$6,000M en recompras`).
 - **`--resource-path`**: resuelve las imágenes relativas al directorio del boletín.
 - **Tamaño carta**: `-V geometry:letterpaper -V geometry:margin=2.5cm`.
 - **Idioma**: `-V lang=es` (títulos y pies en español).

@@ -12,7 +12,7 @@
 
 **El Cuello de Botella del Sistema Fiat: La Transición del Throughput Global y la Saturación de Deuda Occidental**
 
-Las presiones inflacionarias persistentes en EE. UU. (CPI en 3.4%), el fracaso de las intervenciones de liquidez del Tesoro ($6,000M en recompras), la escalada de los rendimientos europeos en máximos multianuales y el inminente cambio de postura del Banco de Japón (18 de septiembre) señalan la incapacidad del mercado monetario mundial para absorber deuda soberana sin respaldo en Throughput ($T$) productivo real. La economía global ha iniciado un desacoplamiento de la hegemonía del dólar estadounidense (similar a la transición de la libra esterlina entre 1946 y 1948), redirigiendo las líneas de producción hacia un sistema multipolar.
+Las presiones inflacionarias persistentes en EE. UU. (CPI en 3.4%), el fracaso de las intervenciones de liquidez del Tesoro (\$6,000M en recompras), la escalada de los rendimientos europeos en máximos multianuales y el inminente cambio de postura del Banco de Japón (18 de septiembre) señalan la incapacidad del mercado monetario mundial para absorber deuda soberana sin respaldo en Throughput ($T$) productivo real. La economía global ha iniciado un desacoplamiento de la hegemonía del dólar estadounidense (similar a la transición de la libra esterlina entre 1946 y 1948), redirigiendo las líneas de producción hacia un sistema multipolar.
 
 ---
 
@@ -55,7 +55,7 @@ La capacidad finita del balance del mercado monetario mundial para absorber emis
 | Enfoque | Visión Ortodoxa / Contabilidad de Costos | Visión TOC / Contabilidad del Throughput |
 | --- | --- | --- |
 | **Interpretación del CPI y Yields** | Considera el repunte de la inflación (3.4%) como un desajuste temporal entre oferta y demanda local que se arregla ajustando sutilmente la tasa de interés en 25 bps. | Identifica la inflación como el síntoma de inyectar moneda sin capacidad de Throughput productivo, elevando el Gasto de Operación ($OE$) de toda la sociedad. |
-| **Operaciones de Recompra (*Buybacks*)** | Ve las recompras de deuda ($6,000M) como intervenciones de "eficiencia de microestructura" para inyectar liquidez y mejorar el funcionamiento del mercado. | Lo define como la auto-compra de inventario defectuoso: el Tesoro gasta recursos para adquirir sus propios pasivos sin demanda real, aumentando el $OE$ estatal sin resolver el cuello de botella. |
+| **Operaciones de Recompra (*Buybacks*)** | Ve las recompras de deuda (\$6,000M) como intervenciones de "eficiencia de microestructura" para inyectar liquidez y mejorar el funcionamiento del mercado. | Lo define como la auto-compra de inventario defectuoso: el Tesoro gasta recursos para adquirir sus propios pasivos sin demanda real, aumentando el $OE$ estatal sin resolver el cuello de botella. |
 | **Solución Propuesta** | Ajustes locales de costo de endeudamiento, recortes presupuestarios fragmentados y control de la velocidad del balance del Banco Central. | Subordinación completa de la política financiera a la capacidad real de producción. Rediseño de los canales de distribución de valor. |
 
 ---
@@ -74,6 +74,6 @@ La capacidad finita del balance del mercado monetario mundial para absorber emis
 
 1. **Identificar la Restricción:** Reconocer que la restricción no es la falta de dinero nominal, sino la saturación del balance del mercado mundial para absorber deuda en USD sin un respaldo en Throughput real ($T$).
 2. **Explotar la Restricción:** Maximizar el rendimiento real de la capacidad productiva actual sin emitir nueva deuda no respaldada. Orientar el gasto público exclusivamente a eliminar cuellos de botella de infraestructura, energía y tecnología.
-3. **Subordinar todo lo demás a la Restricción:** Redireccionar las políticas del Banco Central y del Tesoro para alinearlas con el flujo real. Dejar de simular demanda mediante intervenciones cosméticas como recompras de $6,000M que distorsionan el mercado de bonos.
+3. **Subordinar todo lo demás a la Restricción:** Redireccionar las políticas del Banco Central y del Tesoro para alinearlas con el flujo real. Dejar de simular demanda mediante intervenciones cosméticas como recompras de \$6,000M que distorsionan el mercado de bonos.
 4. **Elevar la Restricción:** Diversificar las plataformas de intercambio global. Adoptar acuerdos multilaterales de compensación en múltiples divisas (RMB, sistemas locales, respaldos en activos duros) para permitir que el Throughput del comercio global siga fluyendo sin pasar obligatoriamente por el cuello de botella de la deuda estadounidense.
 5. **Si la Restricción se ha roto, Volver al Paso 1 (Prevenir la Inercia):** Una vez que el comercio mundial se desacople de la dependencia exclusiva del dólar, evitar que la inercia cree un nuevo cuello de botella de sobre-emisión dentro de los nuevos bloques económicos multipolares.

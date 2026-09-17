@@ -18,7 +18,7 @@ https://www.cnbc.com/2026/09/07/japan-foreign-reserves-yen-intervention.html
 
 **Resumen Ejecutivo:**
 
-El anuncio del Fondo Soberano de Noruega (NBIM) de recortar casi $80 billones de dólares en bonos del Tesoro de EE. UU., sumado a la venta de ~$80 billones en reservas por parte del Banco de Japón (BoJ) para sostener el yen, ha dejado al descubierto la restricción estructural del sistema financiero internacional. La venta coordinada e involuntariamente sincronizada de $160 billones de dólares en *U.S. Treasuries* desborda la capacidad marginal de absorción del mercado de deuda. Lo que la ortodoxia interpreta como ajustes independientes de cartera o liquidez, desde la Teoría de Restricciones (TOC) es un choque directo sobre la restricción del sistema: la liquidez nominal no garantiza la preservación del valor si el rendimiento real (**T**) se destruye por el exceso de inventario soberano (**I**).
+El anuncio del Fondo Soberano de Noruega (NBIM) de recortar casi \$80 billones de dólares en bonos del Tesoro de EE. UU., sumado a la venta de ~\$80 billones en reservas por parte del Banco de Japón (BoJ) para sostener el yen, ha dejado al descubierto la restricción estructural del sistema financiero internacional. La venta coordinada e involuntariamente sincronizada de \$160 billones de dólares en *U.S. Treasuries* desborda la capacidad marginal de absorción del mercado de deuda. Lo que la ortodoxia interpreta como ajustes independientes de cartera o liquidez, desde la Teoría de Restricciones (TOC) es un choque directo sobre la restricción del sistema: la liquidez nominal no garantiza la preservación del valor si el rendimiento real (**T**) se destruye por el exceso de inventario soberano (**I**).
 
 ---
 
@@ -56,7 +56,7 @@ El cuello de botella del sistema financiero global no es la masa monetaria dispo
 
 ### **Visión MMT:**
 
-Para la MMT, la liquidación de $160 billones de dólares en *Treasuries* por parte de Noruega y Japón es un ajuste meramente nominal de reservas. Dado que EE. UU. posee soberanía monetaria, el gasto federal y el servicio de la deuda no enfrentan restricciones financieras reales; el gobierno de EE. UU. siempre puede acreditar cuentas bancarias y la Reserva Federal absorber la deuda no demandada.
+Para la MMT, la liquidación de \$160 billones de dólares en *Treasuries* por parte de Noruega y Japón es un ajuste meramente nominal de reservas. Dado que EE. UU. posee soberanía monetaria, el gasto federal y el servicio de la deuda no enfrentan restricciones financieras reales; el gobierno de EE. UU. siempre puede acreditar cuentas bancarias y la Reserva Federal absorber la deuda no demandada.
 
 ### **Visión TOC:**
 
