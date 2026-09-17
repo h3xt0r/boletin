@@ -31,6 +31,9 @@ pandoc y `pdflatex`. Cada boletín vive en su propio directorio `Boletin NN/`.
    Reemplaza cada bloque ` ```text ` por su referencia.
 2. **No** añadas `{width=...}`: deja que LaTeX escale. La plantilla de pandoc
    ajusta la imagen al ancho de caja con `keepaspectratio` y no la deforma.
+3. Conserva el `.md` **original** (con los bloques de diagrama) en
+   `Boletin NN/Fuente/`; el `.md` de trabajo (con las ligas) es el que compila el
+   pipeline. Usa `scripts/guardar-fuente.sh` o `make fuente`.
 
 ## Compilar
 

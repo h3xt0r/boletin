@@ -26,7 +26,9 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
 │   ├── diagramas-d2-pdf/               # texto -> D2 -> SVG -> PDF vectorial
 │   └── boletin-latex-pdf/              # Markdown -> .tex / .pdf (pandoc)
 └── Boletin NN/                         # un directorio por boletín
-    ├── <fecha>-Boletin-NN ... .md      # fuente del boletín
+    ├── Fuente/                         # .md ORIGINAL (bloques ```text / ```d2)
+    │   └── <fecha>-Boletin-NN ... .md
+    ├── <fecha>-Boletin-NN ... .md      # .md de trabajo (liga a Diagramas/*.pdf)
     ├── Boletin-NN-... .pdf / .tex      # salidas
     └── Diagramas/                      # .d2, .svg y .pdf de cada diagrama
 ```
@@ -39,6 +41,9 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
 ## Flujo de trabajo
 
 1. **Diagramas** — carga la skill `diagramas-d2-pdf`:
+   - **Conserva primero el original:** `make fuente SRC="<Boletin NN>/<archivo>.md"`
+     copia el `.md` con sus bloques de diagrama a `Boletin NN/Fuente/` (nunca se
+     sobrescribe). `extraer-d2.sh` también lo hace automáticamente.
    - Si el boletín trae bloques ` ```d2 `, ejecuta
      `.opencode/skills/diagramas-d2-pdf/scripts/extraer-d2.sh "<Boletin NN>/<archivo>.md"`:
      numera `Diagramas/figura-<N>.d2`, valida la compilación con `d2`, escapa el `$`
@@ -69,6 +74,7 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
 make diagramas                            # .d2 -> .svg + .pdf de BOLETIN/Diagramas/
 make boletin                              # compila el .md del boletín
 make boletin SRC="Boletin 02/<x>.md"      # compila un archivo concreto
+make fuente SRC="Boletin 02/<x>.md"       # guarda el .md original en Fuente/
 make todo BOLETIN="Boletin 03"            # diagramas + boletín del 03
 make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas/
 ```
@@ -76,6 +82,9 @@ make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas
 ## Convenciones
 
 - Un directorio por boletín: `Boletin 02`, `Boletin 03`, … (con espacio).
+- Conserva el `.md` original (con sus bloques ` ```text `/` ```d2 `) en
+  `Boletin NN/Fuente/`; el `.md` de la raíz del boletín es la versión de trabajo
+  (ligas a los PDF). Así el proceso puede rehacerse desde cero.
 - Archivos de salida sin `:` ni espacios (`Boletin-02-Mercado-de-Bonos.pdf`).
 - PDF tamaño carta (`612 x 792 pt`), márgenes de 2.5 cm, 11 pt, idioma español.
 - Diagramas **vectoriales**; nunca PNG para el PDF final.

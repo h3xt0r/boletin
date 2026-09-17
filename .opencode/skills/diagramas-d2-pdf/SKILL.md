@@ -51,6 +51,9 @@ Cuando el boletín trae los diagramas ya escritos en d2lang, no hace falta
 traducirlos: `scripts/extraer-d2.sh` hace el resto.
 
 - Detecta todos los bloques fenced con lenguaje `d2`, en orden de aparición.
+- **Conserva el original:** antes de mutar el `.md`, copia la versión con los
+  bloques a `Boletin NN/Fuente/<nombre>.md` (nunca sobrescribe), para poder
+  rehacer el proceso desde cero.
 - Nombra cada uno `Boletin NN/Diagramas/figura-<N>.d2` (numeración automática
   1, 2, …).
 - **Pie de figura:** primera línea de comentario (`# Título`) del bloque o, si no

@@ -21,19 +21,25 @@ BOLETIN ?= $(shell ls -d Boletin* 2>/dev/null | sort -V | tail -1)
 
 DIAGRAMAS_SCRIPT := .opencode/skills/diagramas-d2-pdf/scripts/d2-to-pdf.sh
 BOLETIN_SCRIPT   := .opencode/skills/boletin-latex-pdf/scripts/build-boletin.sh
+FUENTE_SCRIPT    := .opencode/skills/boletin-latex-pdf/scripts/guardar-fuente.sh
 SKILLS_SCRIPTS   := $(dir $(DIAGRAMAS_SCRIPT))
 
 # Fuente del boletín: el .md de boletín más reciente dentro de BOLETIN.
 SRC ?= $(shell ls -t "$(BOLETIN)"/*[Bb]oletin*.md 2>/dev/null | head -1)
 
-.PHONY: ayuda diagramas boletin todo limpiar
+.PHONY: ayuda fuente diagramas boletin todo limpiar
 
 ayuda:
 	@echo "make diagramas                     # .d2 -> .svg + .pdf vectorial"
 	@echo "make boletin                      # compila el .md del boletín (BOLETIN)"
 	@echo "make boletin SRC=\"<Boletin NN>/<x>.md\"   # compila un boletín concreto"
+	@echo "make fuente SRC=\"<Boletin NN>/<x>.md\"    # guarda el .md ORIGINAL en Fuente/"
 	@echo "make BOLETIN=\"Boletin 02\" todo     # elige el directorio del boletín"
 	@echo "make limpiar                      # borra .svg y .pdf de <BOLETIN>/Diagramas/"
+
+fuente:
+	@if [[ -z "$(SRC)" ]]; then echo "No se encontró boletín .md en '$(BOLETIN)' (usa SRC=...)"; exit 1; fi
+	@"$(FUENTE_SCRIPT)" "$(SRC)"
 
 diagramas:
 	@EXTRAER="$(SKILLS_SCRIPTS)extraer-d2.sh"; \

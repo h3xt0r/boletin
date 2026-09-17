@@ -34,6 +34,7 @@ command -v d2 >/dev/null 2>&1 || { echo "Error: falta 'd2' en el PATH" >&2; exit
 python3 - "$src" <<'PYEOF'
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -97,6 +98,16 @@ bloques = list(fence.finditer(texto))
 if not bloques:
     print("Sin bloques ```d2 en: %s" % src)
     sys.exit(0)
+
+# Preserva el .md ORIGINAL (con los bloques ```d2 intactos) en Fuente/ antes de
+# mutarlo. Nunca sobrescribe una fuente ya guardada, para poder rehacer el
+# proceso desde cero.
+fuente_dir = os.path.join(os.path.dirname(src), 'Fuente')
+fuente = os.path.join(fuente_dir, os.path.basename(src))
+if not os.path.exists(fuente):
+    os.makedirs(fuente_dir, exist_ok=True)
+    shutil.copyfile(src, fuente)
+    print("→ Fuente preservada: %s" % fuente)
 
 out = []
 last = 0
