@@ -1,0 +1,6 @@
+% Ajustes de calidad editorial para los boletines IES.
+% Se incluyen con: pandoc --include-in-header=assets/editorial.tex
+% Nota: pandoc ya carga `microtype` automáticamente si está disponible,
+% por eso aquí solo se afinan los pies de figura.
+\usepackage{caption}     % control de los pies de figura
+\captionsetup{font=small, labelfont=bf}

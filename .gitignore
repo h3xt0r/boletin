@@ -1,0 +1,8 @@
+# Auxiliares de LaTeX (se generan al compilar y no se versionan)
+*.aux
+*.log
+*.out
+*.toc
+
+# Sistema
+.DS_Store
