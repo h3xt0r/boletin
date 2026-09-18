@@ -48,19 +48,6 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -188,25 +175,44 @@ Processes)}\label{procesos-de-pensamiento-thinking-processes}}
 Contagio
 Global}\label{uxe1rbol-de-realidad-actual-crt-saturaciuxf3n-de-deuda-y-contagio-global}}
 
-\begin{figure}
-\centering
-\includegraphics{Diagramas/arbol-realidad-actual-deuda.pdf}
-\caption{Árbol de Realidad Actual (CRT): Saturación de Deuda y Contagio
-Global}
-\end{figure}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Causa Raíz / Restricción Fundamental
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Efecto Indeseable 1 (UDE 1)} & \textbf{Efecto Indeseable 2 (UDE
+2)} & \textbf{Efecto Indeseable 3 (UDE 3)} \\
+Incapacidad de absorber deuda soberana sin aumento de \(T\) real. &
+Inyección de liquidez fiscal financiada con deuda del Tesoro. &
+Rendimientos de deuda europea y estadounidense en máximos. \\
+\textbf{Derivados de UDE 1} & \textbf{Derivados de UDE 2} &
+\textbf{Derivados de UDE 3} \\
+El \emph{Buyback} de \$6,000M destruye el precio de bonos viejos y eleva
+los rendimientos. & El CPI repunta al 3.4\% interanual por distorsión de
+precios y liquidez. & El BoJ se ve forzado a subir tasas (1.25\%),
+amenazando el \emph{Yen Carry Trade}. \\
+\textbf{Resultado Sistémico} & \textbf{Rediseño de Rutas de Flujo
+(Bypass)} & \textbf{Fragmentación Multipolar} \\
+Los tenedores extranjeros desinvierten de Bonos del Tesoro de EE. UU. &
+Transacción de materias primas fuera del sistema SWIFT / USD. &
+Reconfiguración de la Red de Cadena de Valor Global (RMB, Oro, Monedas
+Locales). \\
+\end{longtable}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{nube-de-evaporaciuxf3n-evaporating-cloud-el-conflicto-fiscal-vs.-monetario}{%
 \paragraph{Nube de Evaporación (Evaporating Cloud): El Conflicto Fiscal
 vs.~Monetario}\label{nube-de-evaporaciuxf3n-evaporating-cloud-el-conflicto-fiscal-vs.-monetario}}
-
-\begin{figure}
-\centering
-\includegraphics{Diagramas/nube-evaporacion-fiscal-monetario.pdf}
-\caption{Nube de Evaporación (Evaporating Cloud): El Conflicto Fiscal
-vs.~Monetario}
-\end{figure}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
@@ -215,13 +221,22 @@ vs.~Monetario}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Resolución del Conflicto (Inyección de Supuesto)}
+Objetivo Común (\(O\)): Estabilidad Económica Sistemática
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
+\textbf{Requisito A} & & \textbf{Requisito B} \\
+Mantener la solvencia del mercado de deuda soberana y la liquidez del
+Tesoro. & & Preservar el poder adquisitivo de la moneda y contener la
+inflación. \\
+\textbf{Prerrequisito A'} & & \textbf{Prerrequisito B'} \\
+Recomprar deuda / monetizar el déficit (\emph{Quantitative Easing} o
+\emph{Buybacks} masivos). & & Mantener tasas de interés elevadas y
+restringir la hoja de balance del Banco Central. \\
+& \textbf{Resolución del Conflicto (Inyección de Supuesto)} & \\
 \textbf{Supuesto Falso:} El Dólar es la única divisa posible para
 procesar el comercio global. & \textbf{Inyección TOC:} Diversificar el
 comercio internacional fuera de la compensación en USD (Transición

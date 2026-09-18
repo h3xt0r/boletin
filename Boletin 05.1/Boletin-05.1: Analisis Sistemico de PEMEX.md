@@ -24,7 +24,9 @@ La consultora Welligence propuso escindir los negocios deficitarios de Petróleo
 * **Representación en d2lang de la Nube de Evaporación del Conflicto:**
 
 
+
 ![GARANTIZAR BIENESTAR SOCIAL Y SOBERANÍA ENERGÉTICA](Diagramas/figura-1.pdf)
+
 
 
 ---

@@ -36,105 +36,26 @@ La capacidad finita del balance del mercado monetario mundial para absorber emis
 
 #### Árbol de Realidad Actual (CRT): Saturación de Deuda y Contagio Global
 
-```d2
-# Árbol de Realidad Actual (CRT)
-# Boletín IES 04 - Termodinámica Financiera (2026-09-11)
-# Saturación de Deuda y Contagio Global
-#
-# Árbol de 4 niveles que crece hacia abajo: la restricción fundamental
-# (causa raíz) desencadena tres Efectos Indeseables (UDE), cada uno con
-# sus derivados y su resultado sistémico.
-
-direction: down
-
-Causa: "Causa Raíz / Restricción Fundamental:\nBalance monetario mundial saturado\npara absorber deuda en USD sin respaldo\nen Throughput ($T$) real"
-
-UDE1: "UDE 1:\nIncapacidad de absorber deuda\nsoberana sin aumento de $T$ real"
-UDE2: "UDE 2:\nInyección de liquidez fiscal\nfinanciada con deuda del Tesoro"
-UDE3: "UDE 3:\nRendimientos de deuda europea\ny estadounidense en máximos"
-
-Causa -> UDE1
-Causa -> UDE2
-Causa -> UDE3
-
-Der1: "Derivado 1:\nEl Buyback de $6,000M destruye el\nprecio de bonos viejos y eleva\nlos rendimientos"
-Der2: "Derivado 2:\nEl CPI repunta al 3.4% interanual\npor distorsión de precios\ny liquidez"
-Der3: "Derivado 3:\nEl BoJ forzado a subir tasas\n(1.25%), amenazando el\nYen Carry Trade"
-
-UDE1 -> Der1
-UDE2 -> Der2
-UDE3 -> Der3
-
-Res1: "Resultado Sistémico:\nTenedores extranjeros desinvierten\nde Bonos del Tesoro de EE. UU."
-Res2: "Rediseño de Rutas de Flujo (Bypass):\nMaterias primas transadas fuera\ndel sistema SWIFT / USD"
-Res3: "Fragmentación Multipolar:\nReconfiguración de la Red de Cadena\nde Valor Global (RMB, Oro, Monedas Locales)"
-
-Der1 -> Res1
-Der2 -> Res2
-Der3 -> Res3
-```
+|  | Causa Raíz / Restricción Fundamental |  |
+| --- | --- | --- |
+| **Efecto Indeseable 1 (UDE 1)** | **Efecto Indeseable 2 (UDE 2)** | **Efecto Indeseable 3 (UDE 3)** |
+| Incapacidad de absorber deuda soberana sin aumento de $T$ real. | Inyección de liquidez fiscal financiada con deuda del Tesoro. | Rendimientos de deuda europea y estadounidense en máximos. |
+| **Derivados de UDE 1** | **Derivados de UDE 2** | **Derivados de UDE 3** |
+| El *Buyback* de \$6,000M destruye el precio de bonos viejos y eleva los rendimientos. | El CPI repunta al 3.4% interanual por distorsión de precios y liquidez. | El BoJ se ve forzado a subir tasas (1.25%), amenazando el *Yen Carry Trade*. |
+| **Resultado Sistémico** | **Rediseño de Rutas de Flujo (Bypass)** | **Fragmentación Multipolar** |
+| Los tenedores extranjeros desinvierten de Bonos del Tesoro de EE. UU. | Transacción de materias primas fuera del sistema SWIFT / USD. | Reconfiguración de la Red de Cadena de Valor Global (RMB, Oro, Monedas Locales). |
 
 ---
 
 #### Nube de Evaporación (Evaporating Cloud): El Conflicto Fiscal vs. Monetario
 
-```d2
-# Nube de Evaporación del Conflicto (Evaporating Cloud)
-# Boletín IES 04 - Termodinámica Financiera (2026-09-11)
-# El Conflicto Fiscal vs. Monetario
-#
-# El árbol crece hacia abajo (direction: down). Se fija el motor TALA
-# (único que permite posicionar con top/left); así B/C quedan en un mismo
-# nivel y D/D' en otro, con el conflicto trazado horizontalmente entre ambos.
-
-vars: {
-  d2-config: {
-    layout-engine: tala
-  }
-}
-
-direction: down
-
-A: "Objetivo ($O$):\nEstabilidad Económica Sistemática" {
-  top: 0
-  left: 286
-}
-
-B: "Requisito A:\nMantener la solvencia del mercado de deuda\nsoberana y la liquidez del Tesoro" {
-  top: 200
-  left: 0
-}
-
-C: "Requisito B:\nPreservar el poder adquisitivo\nde la moneda y contener la inflación" {
-  top: 200
-  left: 540
-}
-
-D: "Prerrequisito A':\nRecomprar deuda / monetizar el déficit\n(QE o Buybacks masivos)" {
-  top: 400
-  left: 0
-}
-
-"D'": "Prerrequisito B':\nMantener tasas de interés elevadas\ny restringir la hoja de balance\ndel Banco Central" {
-  top: 400
-  left: 540
-}
-
-A -> B
-A -> C
-B -> D
-C -> "D'"
-
-# Conflicto sistémico entre las acciones D y D'
-D <-> "D'": "CONFLICTO\nFISCAL vs. MONETARIO" {
-  style.stroke: "#e53935"
-  style.stroke-dash: 4
-  style.font-color: "#e53935"
-}
-```
-
-|  | **Resolución del Conflicto (Inyección de Supuesto)** |  |
+|  | Objetivo Común ($O$): Estabilidad Económica Sistemática |  |
 | --- | --- | --- |
+| **Requisito A** |  | **Requisito B** |
+| Mantener la solvencia del mercado de deuda soberana y la liquidez del Tesoro. |  | Preservar el poder adquisitivo de la moneda y contener la inflación. |
+| **Prerrequisito A'** |  | **Prerrequisito B'** |
+| Recomprar deuda / monetizar el déficit (*Quantitative Easing* o *Buybacks* masivos). |  | Mantener tasas de interés elevadas y restringir la hoja de balance del Banco Central. |
+|  | **Resolución del Conflicto (Inyección de Supuesto)** |  |
 | **Supuesto Falso:** El Dólar es la única divisa posible para procesar el comercio global. | **Inyección TOC:** Diversificar el comercio internacional fuera de la compensación en USD (Transición Multipolar), liberando la presión sobre el cuello de botella del balance soberano de EE. UU. | **Falsación:** El flujo global de bienes ($T$) ignora la restricción de liquidez en USD operando con vías de pago alternativas. |
 
 ---

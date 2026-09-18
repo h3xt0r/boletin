@@ -23,19 +23,43 @@ El éxodo de capital desde las Megacaps tecnológicas hiperapalancadas hacia sec
 * **El Sistema bajo Análisis:** La red global de asignación de capital (Renta Variable vs. Mercado de Deuda Corporativa y Bonos Sovereign).
 * **La Restricción del Sistema (Cuello de Botella):** La **Capacidad de Monetización y Generación de Flujo de Caja Real ($T$)**. La restricción ya no es la capacidad física de cómputo o el acceso a chips, sino la integración efectiva de la tecnología en la economía real para producir liquidez neta.
 
-![Sistema de Asignación de Capital Global y su Cuello de Botella](Diagramas/flujo-sistema-capital.pdf)
+```
+       [SISTEMA DE ASIGNACIÓN DE CAPITAL GLOBAL]
+ ┌────────────────────────────────────────────────────────┐
+ │ Insumos de Crédito  ──>  [ I: GPUs / Centros Datos ]   │
+ │ (Mercado de Bonos)       (95% Subutilizado / OE Alto)  │
+ └────────────────────────────────────────────────────────┘
+                                │
+                                ▼  [CUELLO DE BOTELLA ACTUAL]
+                   ┌──────────────────────────┐
+                   │  Throughput Real ($T$)   │ ◄── ¡BLOQUEADO!
+                   │  Monetización en Mercado │
+                   └──────────────────────────┘
+
+```
 
 ### Impacto en los 3 Parámetros Clave de Goldratt
 
 * **Throughput ($T$):** Estancado en el sector tecnológico. El valor de los tokens y el costo de la hora de GPU caen en los mercados secundarios mientras las ventas finales a clientes corporativos tardan en materializarse. Por el contrario, los sectores tradicionales (bancos, retail, salud) mantienen un $T$ recurrente e instantáneo.
-* **Inversión / Inventario ($I$):** Hiperextendido. Miles de millones de dólares en hardware de IA comprados a precios inflados (\$30,000–\$40,000 USD por GPU) actúan como un **Inventario congelado** con una tasa de depreciación y obsolescencia técnica devastadora (18 a 24 meses).
+* **Inversión / Inventario ($I$):** Hiperextendido. Miles de millones de dólares en hardware de IA comprados a precios inflados ($30,000–$40,000 USD por GPU) actúan como un **Inventario congelado** con una tasa de depreciación y obsolescencia técnica devastadora (18 a 24 meses).
 * **Gasto de Operación ($OE$):** Disparado. El costo del servicio de la deuda emitido en el mercado de bonos, sumado a los costos fijos de energía, mantenimiento, licencias y refrigeración líquida para mantener activo el 95% del hardware subutilizado, está erosionando el margen neto.
 
 ---
 
 ### Herramienta de Procesos de Pensamiento: Nube de Evaporación (Evaporating Cloud)
 
-![Nube de Evaporación del Conflicto: CAPEX en IA vs. Throughput Real](Diagramas/nube-evaporacion-capex.pdf)
+```
+                  ┌──> [B] Maximizar Valoración y Multiplicadores ──> [D] Invertir agresivamente en CAPEX de IA
+                  │    a Futuro (Narrativa de Crecimiento)            (Apalancamiento / Acumulación de "I")
+[A] Objetivo:     │
+Garantizar la     │
+Supervivencia y   │
+Retorno de Capital│
+                  │
+                  └──> [C] Garantizar Solvencia, Liquidez  ─────────> [D'] Rotar capital hacia empresas de
+                       y Cobertura de Deuda (Protección)               Throughput Real y Desapalancadas (Valor)
+
+```
 
 * **El Supuesto Falso a Evaporar:** Se asumía la premisa de que *"Incrementar la Inversión ($I$) en infraestructura tecnológica se traduciría automáticamente en Throughput ($T$) a velocidad infinita"*. La exigencia del mercado de bonos rompe este supuesto, forzando la migración del capital hacia [D'].
 

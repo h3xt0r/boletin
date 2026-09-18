@@ -1,8 +1,10 @@
-# TERMODINÁMICA FINANCIERA 05: BOLETÍN TOC INSIGHTS
+# TERMODINÁMICA FINANCIERA: BOLETÍN TOC INSIGHTS
 
 **Análisis Sistémico de PEMEX: La Propuesta de Escisión bajo la Teoría de Restricciones**
 
-[Escindir Pemex](https://es-us.noticias.yahoo.com/proponen-escindir-pemex-negocios-deficitarios-050356273.html)
+[Escisión de PEMEX](https://es-us.noticias.yahoo.com/proponen-escindir-pemex-negocios-deficitarios-050356273.html)
+
+---
 
 ### 1. Titular y Resumen Ejecutivo
 
@@ -21,61 +23,7 @@ La propuesta analizada por *El Economista* de escindir los negocios deficitarios
 
 * **Nube de Evaporación del Conflicto:**
 
-```d2
-# Nube de Evaporación del Conflicto (Evaporating Cloud)
-# Boletín IES 05 - Termodinámica Financiera (2026-09-17)
-# Análisis Sistémico de PEMEX
-#
-# El árbol crece hacia abajo (direction: down) para aprovechar el alto de una
-# hoja carta. Se fija el motor TALA (único que permite posicionar con top/left);
-# así B/C quedan en un mismo nivel y D/D' en otro, con el conflicto trazado
-# horizontalmente entre ambos.
-
-vars: {
-  d2-config: {
-    layout-engine: tala
-  }
-}
-
-direction: down
-
-A: "Garantizar Bienestar Social\ny Soberanía" {
-  top: 0
-  left: 286
-}
-
-B: "Mantener la cadena integrada\ncomo amortiguador estratégico" {
-  top: 200
-  left: 0
-}
-
-C: "Eliminar el drenaje de caja\ny recortar activos deficitarios" {
-  top: 200
-  left: 540
-}
-
-D: "Absorber pérdidas operativas con\nendeudamiento o subsidios públicos" {
-  top: 400
-  left: 0
-}
-
-"D'": "Vender o segregar unidades que arrojan\nmárgenes financieros negativos" {
-  top: 400
-  left: 540
-}
-
-A -> B
-A -> C
-B -> D
-C -> "D'"
-
-# Conflicto sistémico entre las acciones D y D'
-D <-> "D'": "EL CONFLICTO:\nESCINDIR / RECURSAR PEMEX" {
-  style.stroke: "#e53935"
-  style.stroke-dash: 4
-  style.font-color: "#e53935"
-}
-```
+![Nube de Evaporación del Conflicto](Diagramas/nube-evaporacion-pemex.pdf)
 
 ---
 

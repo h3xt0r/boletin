@@ -18,7 +18,7 @@ https://www.cnbc.com/2026/09/07/japan-foreign-reserves-yen-intervention.html
 
 **Resumen Ejecutivo:**
 
-El anuncio del Fondo Soberano de Noruega (NBIM) de recortar casi \$80 billones de dólares en bonos del Tesoro de EE. UU., sumado a la venta de ~\$80 billones en reservas por parte del Banco de Japón (BoJ) para sostener el yen, ha dejado al descubierto la restricción estructural del sistema financiero internacional. La venta coordinada e involuntariamente sincronizada de \$160 billones de dólares en *U.S. Treasuries* desborda la capacidad marginal de absorción del mercado de deuda. Lo que la ortodoxia interpreta como ajustes independientes de cartera o liquidez, desde la Teoría de Restricciones (TOC) es un choque directo sobre la restricción del sistema: la liquidez nominal no garantiza la preservación del valor si el rendimiento real (**T**) se destruye por el exceso de inventario soberano (**I**).
+El anuncio del Fondo Soberano de Noruega (NBIM) de recortar casi $80 billones de dólares en bonos del Tesoro de EE. UU., sumado a la venta de ~$80 billones en reservas por parte del Banco de Japón (BoJ) para sostener el yen, ha dejado al descubierto la restricción estructural del sistema financiero internacional. La venta coordinada e involuntariamente sincronizada de $160 billones de dólares en *U.S. Treasuries* desborda la capacidad marginal de absorción del mercado de deuda. Lo que la ortodoxia interpreta como ajustes independientes de cartera o liquidez, desde la Teoría de Restricciones (TOC) es un choque directo sobre la restricción del sistema: la liquidez nominal no garantiza la preservación del valor si el rendimiento real (**T**) se destruye por el exceso de inventario soberano (**I**).
 
 ---
 
@@ -31,12 +31,23 @@ El cuello de botella del sistema financiero global no es la masa monetaria dispo
 ### **B. Parámetros Clave de Goldratt**
 
 * **Throughput (T):** La generación de rendimiento neto real ajustado por inflación y riesgo. $T$ se está reduciendo significativamente debido al deterioro de los precios de los bonos sovereign y la volatilidad.
-* **Inversión / Inventario (I):** Representado por las tenencias masivas de *U.S. Treasuries* ($215 billones en el caso de NBIM, $1.21 billones en reservas de Japón). Esta deuda acumulada funciona como "Inventario Inmovilizado" con elevadas pérdidas latentes a medida que las tasas suben.
-* **Gasto de Operación (OE):** Los costos financieros y de oportunidad necesarios para sostener el sistema, incluyendo las intervenciones en el mercado cambiario del BoJ y el creciente costo del servicio de la deuda pública estadounidense.
+* **Inversión / Inventario (**I**):** Representado por las tenencias masivas de *U.S. Treasuries* ($215 billones en el caso de NBIM, $1.21 billones en reservas de Japón). Esta deuda acumulada funciona como "Inventario Inmovilizado" con elevadas pérdidas latentes a medida que las tasas suben.
+* **Gasto de Operación (**OE**):** Los costos financieros y de oportunidad necesarios para sostener el sistema, incluyendo las intervenciones en el mercado cambiario del BoJ y el creciente costo del servicio de la deuda pública estadounidense.
 
 ### **C. Herramienta de Procesos de Pensamiento: Nube de Evaporación del Conflicto (Evaporating Cloud)**
 
-![Nube de Evaporación del Conflicto (Evaporating Cloud)](Diagramas/nube-evaporacion-conflicto.pdf)
+```text
+                     [ B: Preservar el Throughput (T) ] ---> [ D: Desprenderse de Treasuries ]
+                     [    y proteger el valor del Fondo ]      [    y rotar a activos reales  ]
+                    /
+[ A: Sostenibilidad ]                                              x (CONFLICTO SISTÉMICO)
+[    y Estabilidad  ]
+[    Financiera     ]
+                    \
+                     [ C: Garantizar la Liquidez y ] ---> [ D': Mantener reservas en     ]
+                     [    Estabilidad del Mercado   ]      [     Treasuries de EE. UU.  ]
+
+```
 
 * **Premisa Falsa Evaporada:** *"Los U.S. Treasuries son el único activo infinitamente líquido y exento de riesgo de mercado para la reserva de capitales soberanos."*
 * **Inyección TOC:** La sustitución de deuda gubernamental por crédito corporativo, hipotecas (*MBS*) y activos reales genera mayor Throughput sin comprometer la liquidez operativa requerida por los fondos soberanos.
@@ -56,7 +67,7 @@ El cuello de botella del sistema financiero global no es la masa monetaria dispo
 
 ### **Visión MMT:**
 
-Para la MMT, la liquidación de \$160 billones de dólares en *Treasuries* por parte de Noruega y Japón es un ajuste meramente nominal de reservas. Dado que EE. UU. posee soberanía monetaria, el gasto federal y el servicio de la deuda no enfrentan restricciones financieras reales; el gobierno de EE. UU. siempre puede acreditar cuentas bancarias y la Reserva Federal absorber la deuda no demandada.
+Para la MMT, la liquidación de $160 billones de dólares en *Treasuries* por parte de Noruega y Japón es un ajuste meramente nominal de reservas. Dado que EE. UU. posee soberanía monetaria, el gasto federal y el servicio de la deuda no enfrentan restricciones financieras reales; el gobierno de EE. UU. siempre puede acreditar cuentas bancarias y la Reserva Federal absorber la deuda no demandada.
 
 ### **Visión TOC:**
 

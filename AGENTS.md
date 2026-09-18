@@ -3,18 +3,20 @@
 ## Qué es este repositorio
 
 Boletines financieros redactados en **Markdown**. Cada boletín incluye uno o más
-**diagramas en texto** (bloques ` ```text `) que deben convertirse a un formato
-vectorial y producir un **PDF de calidad editorial** con LaTeX + pandoc.
+**diagramas en texto** (bloques ` ```text `) o en **d2lang** (bloques ` ```d2 `)
+que se convierten a un formato vectorial para producir un **PDF de calidad
+editorial** con LaTeX + pandoc.
 
-Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
+Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del boletín:
 
-## Objetivo de cada boletín
-
-1. Convertir los diagramas del boletín (bloques ` ```text ` o ` ```d2 `) a **D2**
-   (`Boletin NN/Diagramas/*.d2`).
-2. Renderizar cada diagrama a **SVG** y exportarlo a **PDF vectorial** (0 raster).
-3. Incrustar los diagramas en el Markdown como imágenes PDF.
-4. Compilar el boletín a **PDF tamaño carta** (y a `.tex`) con pandoc + LaTeX.
+- **Fuente (web):** `YYYY-MM-DD-Boletin-NN: Nombre.md`, con los diagramas en
+  ASCII (bloques ` ```text `) o en d2lang (bloques ` ```d2 `). Es el archivo que
+  se publica en la **WEB** (el motor de Markdown renderiza los bloques de código)
+  y el punto de partida del proceso. **Se preserva intacta**: el pipeline nunca la
+  modifica.
+- **Trabajo (imprenta):** `Boletin-NN: Nombre.md` (el mismo nombre **sin la
+  fecha**), con las ligas a los diagramas `Diagramas/*.pdf`. Es el que compila
+  pandoc para el **PDF impreso**. Se genera a partir de la fuente.
 
 ## Estructura
 
@@ -23,14 +25,13 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
 ├── AGENTS.md
 ├── Makefile
 ├── .opencode/skills/
-│   ├── diagramas-d2-pdf/               # texto -> D2 -> SVG -> PDF vectorial
+│   ├── diagramas-d2-pdf/               # diagramas -> D2 -> SVG -> PDF vectorial
 │   └── boletin-latex-pdf/              # Markdown -> .tex / .pdf (pandoc)
 └── Boletin NN/                         # un directorio por boletín
-    ├── Fuente/                         # .md ORIGINAL (bloques ```text / ```d2)
-    │   └── <fecha>-Boletin-NN ... .md
-    ├── <fecha>-Boletin-NN ... .md      # .md de trabajo (liga a Diagramas/*.pdf)
-    ├── Boletin-NN-... .pdf / .tex      # salidas
-    └── Diagramas/                      # .d2, .svg y .pdf de cada diagrama
+    ├── YYYY-MM-DD-Boletin-NN: ....md   # FUENTE (```text / ```d2)  — intacta (web)
+    ├── Boletin-NN: ....md              # TRABAJO (sin fecha, ligas a Diagramas/*.pdf)
+    ├── Diagramas/                      # .d2, .svg y .pdf de cada diagrama
+    └── Boletin-NN-... .pdf / .tex      # salidas
 ```
 
 ## Herramientas
@@ -40,57 +41,62 @@ Cada boletín vive en su propio directorio `Boletin NN/` (con espacio).
 
 ## Flujo de trabajo
 
-1. **Diagramas** — carga la skill `diagramas-d2-pdf`:
-   - **Conserva primero el original:** `make fuente SRC="<Boletin NN>/<archivo>.md"`
-     copia el `.md` con sus bloques de diagrama a `Boletin NN/Fuente/` (nunca se
-     sobrescribe). `extraer-d2.sh` también lo hace automáticamente.
-   - Si el boletín trae bloques ` ```d2 `, ejecuta
-     `.opencode/skills/diagramas-d2-pdf/scripts/extraer-d2.sh "<Boletin NN>/<archivo>.md"`:
-     numera `Diagramas/figura-<N>.d2`, valida la compilación con `d2`, escapa el `$`
-     suelto de las etiquetas y sustituye cada bloque por `![<pie>](Diagramas/figura-<N>.pdf)`.
-   - Si trae bloques ` ```text `, tradúcelos a `Boletin NN/Diagramas/<nombre>.d2`. Usa
-     `direction: down` para orientación vertical; en nubes de evaporación usa el
-     motor **TALA** con `top`/`left` para evitar el escalonamiento de `dagre`/`elk`.
-   - `d2 "Boletin NN/Diagramas/<nombre>.d2" "Boletin NN/Diagramas/<nombre>.svg"`
-   - `mutool convert -F pdf -o "Boletin NN/Diagramas/<nombre>.pdf" "Boletin NN/Diagramas/<nombre>.svg"`
+1. **Fuente** — el usuario coloca `Boletin NN/YYYY-MM-DD-Boletin-NN: Nombre.md`
+   (diagramas ` ```text ` o ` ```d2 `). No se toca; el pipeline nunca la modifica.
+
+2. **Diagramas** — carga la skill `diagramas-d2-pdf`:
+   - Si la fuente trae bloques ` ```d2 ` (p. ej. `Boletin 05.1`), `make trabajo`
+     ejecuta `extraer-d2.sh "<fuente>.md" "<trabajo>.md"`: numera
+     `Diagramas/figura-<N>.d2`, valida la compilación con `d2`, escapa el `$`
+     suelto de las etiquetas y escribe el `.md` de trabajo con
+     `![<pie>](Diagramas/figura-<N>.pdf)`.
+   - Si la fuente trae bloques ` ```text `, traduce cada uno a
+     `Boletin NN/Diagramas/<nombre>.d2` y escribe el `.md` de trabajo sustituyendo
+     el bloque por `![<pie>](Diagramas/<nombre>.pdf)`. Usa `direction: down` para
+     orientación vertical; en nubes de evaporación usa el motor **TALA** con
+     `top`/`left` para evitar el escalonamiento de `dagre`/`elk`.
+   - `make diagramas` renderiza cada `.d2`:
+     `d2 x.d2 x.svg` y `mutool convert -F pdf -o x.pdf x.svg`.
    - **Nunca** uses el PDF nativo de d2 (`d2 x.d2 x.pdf`): es raster.
-2. **Documento** — carga la skill `boletin-latex-pdf`:
-   - En el `.md`, referencia cada diagrama como `Diagramas/<nombre>.pdf` (ruta
-     relativa al directorio del boletín) y quita el bloque ` ```text `. Sin `{width}`.
-   - Compila con pandoc (`pdflatex`, `letterpaper`, `lang=es`,
-     `--from=markdown+tex_math_dollars`). El script añade `--resource-path` con el
-     directorio del boletín.
-   - **Escapa SIEMPRE los importes en dólares del `.md` como `\$`** (`\$6,000M`,
+
+3. **Documento** — carga la skill `boletin-latex-pdf`:
+   - El `.md` de trabajo referencia cada diagrama como `Diagramas/<nombre>.pdf`
+     (ruta relativa al directorio del boletín). Sin `{width}`.
+   - **Escapa SIEMPRE los importes en dólares como `\$`** (`\$6,000M`,
      `\$160 billones`); `$...$` queda reservado para variables (`$T$`, `$I$`,
      `$OE$`). Un `$` suelto puede cerrarse con cualquier `$` posterior válido del
      mismo párrafo y volver matemático todo el texto intermedio (caso Boletín 04).
-   - Genera también el `.tex` standalone.
+   - `make boletin` compila el `.md` de trabajo con pandoc (`pdflatex`,
+     `letterpaper`, `lang=es`, `--from=markdown+tex_math_dollars`). El script
+     añade `--resource-path` con el directorio del boletín. Genera también el
+     `.tex` standalone.
 
 ### Atajos con make
 
 `BOLETIN` elige el directorio del boletín; por defecto, el `Boletin NN` más reciente.
 
 ```bash
+make trabajo                              # fuente con ```d2 -> .md de trabajo + figura-N.d2
 make diagramas                            # .d2 -> .svg + .pdf de BOLETIN/Diagramas/
-make boletin                              # compila el .md del boletín
-make boletin SRC="Boletin 02/<x>.md"      # compila un archivo concreto
-make fuente SRC="Boletin 02/<x>.md"       # guarda el .md original en Fuente/
-make todo BOLETIN="Boletin 03"            # diagramas + boletín del 03
+make boletin                              # compila el .md de trabajo del boletín
+make boletin WORK="Boletin 02/Boletin-02: Mercado de Bonos.md"
+make todo BOLETIN="Boletin 03"            # trabajo + diagramas + boletín
 make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas/
 ```
 
 ## Convenciones
 
 - Un directorio por boletín: `Boletin 02`, `Boletin 03`, … (con espacio).
-- Conserva el `.md` original (con sus bloques ` ```text `/` ```d2 `) en
-  `Boletin NN/Fuente/`; el `.md` de la raíz del boletín es la versión de trabajo
-  (ligas a los PDF). Así el proceso puede rehacerse desde cero.
+- **Fuente:** `YYYY-MM-DD-Boletin-NN: Nombre.md`, con los diagramas de texto/d2,
+  sin tocar (es la que se publica en la web). **Trabajo:** `Boletin-NN: Nombre.md`
+  (sin fecha), con las ligas a `Diagramas/*.pdf`; es el que se compila a imprenta.
+  El `.md` de trabajo se puede regenerar desde la fuente en cualquier momento.
+- No editar a mano los archivos generados (`.pdf`, `.tex`, `.svg`).
 - Archivos de salida sin `:` ni espacios (`Boletin-02-Mercado-de-Bonos.pdf`).
 - PDF tamaño carta (`612 x 792 pt`), márgenes de 2.5 cm, 11 pt, idioma español.
 - Diagramas **vectoriales**; nunca PNG para el PDF final.
 - El escalado de las imágenes lo hace LaTeX: no fijar `width`.
 - El `.tex` usa rutas `Diagramas/...`: compílalo desde el directorio de su boletín.
-- No editar a mano los archivos generados (`.pdf`, `.tex`, `.svg`).
 
 ## Verificación obligatoria antes de entregar
 

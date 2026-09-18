@@ -21,19 +21,21 @@ pandoc y `pdflatex`. Cada boletín vive en su propio directorio `Boletin NN/`.
 
 ## Antes de compilar
 
-1. Los diagramas del `.md` deben referenciarse como **imágenes PDF**, con ruta
-   relativa al directorio del boletín:
+1. En el `.md` de trabajo, cada diagrama debe referenciarse como **imagen PDF**,
+   con ruta relativa al directorio del boletín:
 
    ```markdown
    ![Nube de Evaporación del Conflicto](Diagramas/nube-evaporacion-conflicto.pdf)
    ```
 
-   Reemplaza cada bloque ` ```text ` por su referencia.
+   El `.md` de trabajo (sin fecha) se genera desde la fuente (con fecha)
+   sustituyendo cada bloque ` ```text ` / ` ```d2 ` por su referencia; la fuente
+   nunca se modifica.
 2. **No** añadas `{width=...}`: deja que LaTeX escale. La plantilla de pandoc
    ajusta la imagen al ancho de caja con `keepaspectratio` y no la deforma.
-3. Conserva el `.md` **original** (con los bloques de diagrama) en
-   `Boletin NN/Fuente/`; el `.md` de trabajo (con las ligas) es el que compila el
-   pipeline. Usa `scripts/guardar-fuente.sh` o `make fuente`.
+3. **Escapa los importes en dólares** del `.md` de trabajo como `\$` antes de
+   compilar (`\$6,000M`, `\$160 billones`), reservando `$...$` para las variables
+   (`$T$`, `$I$`, `$\neq$`). Ver *Claves de calidad editorial*.
 
 ## Compilar
 
@@ -81,10 +83,10 @@ en el directorio del boletín.
 
 ## Convenciones de nombre
 
-Evita `:` y espacios en los archivos generados (problemáticos en Windows y make), y
-quita el prefijo de fecha para conservar el nombre corto del boletín:
+Evita `:` y espacios en los archivos generados (problemáticos en Windows y make).
+El `.md` de trabajo ya no lleva la fecha; el script sanea el resto:
 
-`2026-09-09-Boletin-02: Mercado de Bonos.md` → `Boletin-02-Mercado-de-Bonos.pdf`
+`Boletin-02: Mercado de Bonos.md` → `Boletin-02-Mercado-de-Bonos.pdf`
 
 ## Verificación
 

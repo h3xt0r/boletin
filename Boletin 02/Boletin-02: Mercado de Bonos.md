@@ -31,65 +31,12 @@ El cuello de botella del sistema financiero global no es la masa monetaria dispo
 ### **B. Parámetros Clave de Goldratt**
 
 * **Throughput (T):** La generación de rendimiento neto real ajustado por inflación y riesgo. $T$ se está reduciendo significativamente debido al deterioro de los precios de los bonos sovereign y la volatilidad.
-* **Inversión / Inventario (I):** Representado por las tenencias masivas de *U.S. Treasuries* ($215 billones en el caso de NBIM, $1.21 billones en reservas de Japón). Esta deuda acumulada funciona como "Inventario Inmovilizado" con elevadas pérdidas latentes a medida que las tasas suben.
-* **Gasto de Operación (OE):** Los costos financieros y de oportunidad necesarios para sostener el sistema, incluyendo las intervenciones en el mercado cambiario del BoJ y el creciente costo del servicio de la deuda pública estadounidense.
+* **Inversión / Inventario (**I**):** Representado por las tenencias masivas de *U.S. Treasuries* (\$215 billones en el caso de NBIM, \$1.21 billones en reservas de Japón). Esta deuda acumulada funciona como "Inventario Inmovilizado" con elevadas pérdidas latentes a medida que las tasas suben.
+* **Gasto de Operación (**OE**):** Los costos financieros y de oportunidad necesarios para sostener el sistema, incluyendo las intervenciones en el mercado cambiario del BoJ y el creciente costo del servicio de la deuda pública estadounidense.
 
 ### **C. Herramienta de Procesos de Pensamiento: Nube de Evaporación del Conflicto (Evaporating Cloud)**
 
-```d2
-# Nube de Evaporación del Conflicto (Evaporating Cloud)
-# Boletín IES 02 - Termodinámica Financiera (2026-09-09)
-#
-# El árbol crece hacia abajo (direction: down) para aprovechar el alto
-# de una hoja tamaño carta. Se fija el motor TALA porque es el único que
-# permite posicionar nodos con top/left; así B/C quedan en un mismo nivel
-# y D/D' en otro, con el conflicto trazado horizontalmente entre ambos.
-
-vars: {
-  d2-config: {
-    layout-engine: tala
-  }
-}
-
-direction: down
-
-A: "Sostenibilidad y\nEstabilidad Financiera" {
-  top: 0
-  left: 210
-}
-
-B: "Preservar el Throughput (T)\ny proteger el valor del Fondo" {
-  top: 170
-  left: 0
-}
-
-C: "Garantizar la Liquidez y\nEstabilidad del Mercado" {
-  top: 170
-  left: 360
-}
-
-D: "Desprenderse de Treasuries\ny rotar a activos reales" {
-  top: 340
-  left: 0
-}
-
-"D'": "Mantener reservas en\nTreasuries de EE. UU." {
-  top: 340
-  left: 360
-}
-
-A -> B
-A -> C
-B -> D
-C -> "D'"
-
-# Conflicto sistémico entre las acciones D y D'
-D <-> "D'": "CONFLICTO\nSISTÉMICO" {
-  style.stroke: "#e53935"
-  style.stroke-dash: 4
-  style.font-color: "#e53935"
-}
-```
+![Nube de Evaporación del Conflicto (Evaporating Cloud)](Diagramas/nube-evaporacion-conflicto.pdf)
 
 * **Premisa Falsa Evaporada:** *"Los U.S. Treasuries son el único activo infinitamente líquido y exento de riesgo de mercado para la reserva de capitales soberanos."*
 * **Inyección TOC:** La sustitución de deuda gubernamental por crédito corporativo, hipotecas (*MBS*) y activos reales genera mayor Throughput sin comprometer la liquidez operativa requerida por los fondos soberanos.

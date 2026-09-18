@@ -11,7 +11,7 @@ texto que traen los boletines en Markdown. Cada boletín guarda sus diagramas en
 
 ## Cuándo usarlo
 
-- El boletín trae un diagrama dentro de un bloque de código ` ```text `.
+- El boletín trae un diagrama dentro de un bloque de código ` ```text ` o ` ```d2 `.
 - Hay que crear o actualizar un diagrama en el `Diagramas/` del boletín.
 - El PDF final debe mostrar el diagrama nítido a cualquier escala de impresión.
 
@@ -42,8 +42,9 @@ Atajos:
 - `scripts/d2-to-pdf.sh "Boletin NN/Diagramas/<nombre>.d2"` ejecuta los pasos 3
   y 4 y verifica. El motor por defecto es `mutool`; usa `D2PDF_ENGINE=rsvg` para
   `rsvg-convert`.
-- `scripts/extraer-d2.sh "<Boletin NN>/<archivo>.md"` extrae los bloques ` ```d2 `
-  del Markdown a `Diagramas/figura-<N>.d2` y sustituye cada bloque por su imagen.
+- `scripts/extraer-d2.sh "<Boletin NN>/<fuente>.md" "<Boletin NN>/<trabajo>.md"`
+  extrae los bloques ` ```d2 ` de la fuente a `Diagramas/figura-<N>.d2` y escribe
+  el `.md` de trabajo con cada bloque sustituido por su imagen.
 
 ## Intake directo: bloques ```d2 en el Markdown
 
@@ -51,19 +52,21 @@ Cuando el boletín trae los diagramas ya escritos en d2lang, no hace falta
 traducirlos: `scripts/extraer-d2.sh` hace el resto.
 
 - Detecta todos los bloques fenced con lenguaje `d2`, en orden de aparición.
-- **Conserva el original:** antes de mutar el `.md`, copia la versión con los
-  bloques a `Boletin NN/Fuente/<nombre>.md` (nunca sobrescribe), para poder
-  rehacer el proceso desde cero.
+- **No muta la fuente:** el `.md` con fecha (fuente) se preserva intacto; la
+  versión con las ligas se escribe en el `.md` de trabajo (sin fecha, segundo
+  argumento) o a stdout si se omite.
 - Nombra cada uno `Boletin NN/Diagramas/figura-<N>.d2` (numeración automática
   1, 2, …).
 - **Pie de figura:** primera línea de comentario (`# Título`) del bloque o, si no
   hay, la primera etiqueta de nodo (con `\n` como espacio).
-- Sustituye el bloque completo por `![<pie>](Diagramas/figura-<N>.pdf)`.
-- **Valida antes de tocar nada:** cada bloque debe compilar con `d2`; si uno
-  falla, aborta y avisa (revisa la sintaxis del bloque en el `.md`).
+- Sustituye el bloque completo, en el `.md` de trabajo, por
+  `![<pie>](Diagramas/figura-<N>.pdf)`.
+- **Valida antes de escribir nada:** cada bloque debe compilar con `d2`; si uno
+  falla, aborta y avisa (revisa la sintaxis del bloque en la fuente).
 - **Escapa `$`** sueltos dentro de las etiquetas (`\$`) para que d2 los trate
   como literales (montos `$6,000M` y variables `$T$`, `$O$`, …).
-- Si el `.md` no trae bloques ` ```d2 `, no hace nada (compatible con ` ```text `).
+- Si la fuente no trae bloques ` ```d2 `, no escribe nada (los diagramas
+  ` ```text ` se traducen a mano y se enlazan en el `.md` de trabajo).
 
 ## Traducción de diagramas de texto a D2
 

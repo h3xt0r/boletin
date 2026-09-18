@@ -3,43 +3,48 @@
 # extraer-d2.sh — Extrae los bloques ```d2 de un boletín Markdown
 #
 # Uso:
-#   extraer-d2.sh <boletin.md>
+#   extraer-d2.sh <fuente.md> [<trabajo.md>]
 #
 # Para cada bloque fenced con lenguaje `d2` (en orden de aparición):
 #   1. Nombra el diagrama `Diagramas/figura-<N>.d2` (numeración automática).
 #   2. Escapa `$` sueltos dentro de las etiquetas (`\$`) para que d2 los
 #      trate como literales (montos y variables: $6,000M, $T$, $O$, …).
-#   3. Valida que el bloque compile con `d2` antes de tocar el .md; si falla,
-#      aborta sin modificar nada.
-#   4. Sustituye el bloque por una imagen PDF vectorial:
+#   3. Valida que el bloque compile con `d2`; si falla, aborta sin escribir.
+#   4. Sustituye cada bloque por una imagen PDF vectorial:
 #      `![<pie>](Diagramas/figura-<N>.pdf)`
 #      El pie se toma de la primera línea de comentario (`# Título`) del
 #      bloque o, si no hay, de la primera etiqueta de nodo.
 #
-# Si el boletín no trae bloques ```d2, no hace nada (compatible con el
-# intake anterior de bloques ```text).
+# La fuente NUNCA se modifica: el resultado (la fuente con las ligas a los PDF)
+# se escribe en <trabajo.md>, o a stdout si se omite. Así el .md con fecha
+# (fuente: bloques ```text / ```d2 intactos) se preserva tal cual, y el .md de
+# trabajo (sin fecha, ligas a Diagramas/*.pdf) se genera a partir de él.
+#
+# Si la fuente no trae bloques ```d2, no escribe nada (los diagramas ```text
+# se traducen a mano a Diagramas/<nombre>.d2).
 #
 set -euo pipefail
 
 uso() {
-  echo "Uso: $(basename "$0") <boletin.md>" >&2
+  echo "Uso: $(basename "$0") <fuente.md> [<trabajo.md>]" >&2
   exit 2
 }
 
-[[ $# -eq 1 ]] || uso
+[[ $# -ge 1 && $# -le 2 ]] || uso
 src="$1"
+dst="${2:-}"
 [[ -f "$src" ]] || { echo "Error: no existe '$src'" >&2; exit 1; }
 command -v d2 >/dev/null 2>&1 || { echo "Error: falta 'd2' en el PATH" >&2; exit 1; }
 
-python3 - "$src" <<'PYEOF'
+python3 - "$src" "$dst" <<'PYEOF'
 import os
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
 
 src = sys.argv[1]
+dst = sys.argv[2] or None
 
 
 def escapar_dolares(contenido: str) -> str:
@@ -96,18 +101,8 @@ with open(src, encoding='utf-8') as f:
 fence = re.compile(r'^(`{3,})[ \t]*d2[ \t]*\n(.*?)\n^\1[ \t]*$', re.M | re.S)
 bloques = list(fence.finditer(texto))
 if not bloques:
-    print("Sin bloques ```d2 en: %s" % src)
+    print("Sin bloques ```d2 en: %s (los diagramas ```text se traducen a mano)" % src)
     sys.exit(0)
-
-# Preserva el .md ORIGINAL (con los bloques ```d2 intactos) en Fuente/ antes de
-# mutarlo. Nunca sobrescribe una fuente ya guardada, para poder rehacer el
-# proceso desde cero.
-fuente_dir = os.path.join(os.path.dirname(src), 'Fuente')
-fuente = os.path.join(fuente_dir, os.path.basename(src))
-if not os.path.exists(fuente):
-    os.makedirs(fuente_dir, exist_ok=True)
-    shutil.copyfile(src, fuente)
-    print("→ Fuente preservada: %s" % fuente)
 
 out = []
 last = 0
@@ -129,8 +124,12 @@ for i, m in enumerate(bloques, 1):
     print("→ %s   (pie: %s)" % (d2_path, pie))
 
 out.append(texto[last:])
-with open(src, 'w', encoding='utf-8') as f:
-    f.write(''.join(out))
+resultado = ''.join(out)
 
-print("✔ %d bloque(s) ```d2 extraído(s): %s" % (len(bloques), src))
+if dst:
+    with open(dst, 'w', encoding='utf-8') as f:
+        f.write(resultado)
+    print("✔ %d bloque(s) ```d2 extraído(s): %s → %s" % (len(bloques), src, dst))
+else:
+    sys.stdout.write(resultado)
 PYEOF

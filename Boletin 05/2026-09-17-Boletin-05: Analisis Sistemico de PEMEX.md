@@ -1,8 +1,10 @@
-# TERMODINÁMICA FINANCIERA 05: BOLETÍN TOC INSIGHTS
+# TERMODINÁMICA FINANCIERA: BOLETÍN TOC INSIGHTS
 
 **Análisis Sistémico de PEMEX: La Propuesta de Escisión bajo la Teoría de Restricciones**
 
-[Escindir Pemex](https://es-us.noticias.yahoo.com/proponen-escindir-pemex-negocios-deficitarios-050356273.html)
+[Escisión de PEMEX](https://es-us.noticias.yahoo.com/proponen-escindir-pemex-negocios-deficitarios-050356273.html)
+
+---
 
 ### 1. Titular y Resumen Ejecutivo
 
@@ -21,7 +23,22 @@ La propuesta analizada por *El Economista* de escindir los negocios deficitarios
 
 * **Nube de Evaporación del Conflicto:**
 
-![Nube de Evaporación del Conflicto](Diagramas/nube-evaporacion-pemex.pdf)
+```
+               [ GARANTIZAR BIENESTAR SOCIAL Y SOBERANÍA ]
+                                    |
+            (Requisito A)           |          (Requisito B)
+     Mantener la cadena integrada   |    Eliminar el drenaje de caja
+     como amortiguador estratégico  |    y recortar activos deficitarios
+                 \                  |                  /
+                  \                 |                 /
+                   [ EL CONFLICTO: ESCINDIR / RECURSAR PEMEX ]
+                  /                                     \
+         (Prerrequisito A)                       (Prerrequisito B)
+    Absorber pérdidas operativas            Vender o segregar unidades
+     con endeudamiento o subsidios           que arrojan márgenes
+               públicos                        financieros negativos
+
+```
 
 ---
 
