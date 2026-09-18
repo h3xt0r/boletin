@@ -83,6 +83,14 @@ en el directorio del boletín.
   guionado y pies "Figura N:").
 - **Pies de figura**: `\usepackage{caption}` + `\captionsetup{font=small,labelfont=bf}`
   en la plantilla (sustituyó al antiguo `assets/editorial.tex`).
+- **Secciones sin numeración automática**: `\setcounter{secnumdepth}{-1}` en la
+  plantilla (equivale a `\section*`): los títulos solo muestran los números que el
+  markdown escribe a mano ("1. Titular…", "3. Contabilidad…"), evitando el doble
+  "1.3 3. …" de LaTeX + número manual.
+- **Títulos nunca huérfanos**: `needspace` + etoolbox (`\pretocmd` sobre
+  `\section`/`\subsection`/`\subsubsection`) reservan 3 líneas antes de cada
+  sección; si no caben, el título salta de página (imprescindible cuando el
+  título precede a una tabla `longtable`).
 
 ## Convenciones de nombre
 

@@ -100,6 +100,12 @@ make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas
   márgenes ni tamaños de letra por línea de comandos.
 - Diagramas **vectoriales**; nunca PNG para el PDF final.
 - El escalado de las imágenes lo hace LaTeX: no fijar `width`.
+- Secciones **sin numeración automática** (la plantilla usa
+  `\setcounter{secnumdepth}{-1}`, equivalente a `\section*`): solo se muestran
+  los números que el markdown escribe a mano en los títulos ("1.", "2.", "A.", …).
+- Los títulos **nunca quedan huérfanos** al pie de página: la plantilla reserva
+  espacio antes de cada sección (`needspace` + etoolbox, 3 líneas); evita también
+  el caso de título seguido de tabla `longtable`.
 - El `.tex` usa rutas `Diagramas/...`: compílalo desde el directorio de su boletín.
 
 ## Verificación obligatoria antes de entregar

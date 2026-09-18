@@ -14,6 +14,19 @@
 % Español: títulos y pies ("Figura"), guionado
 \usepackage[spanish]{babel}
 
+% Secciones sin numeración automática (equivalente a \section*{...}): solo se
+% muestran los números que el markdown escribe a mano ("1.", "2.", "A.", ...).
+\setcounter{secnumdepth}{-1}
+
+% Los títulos nunca quedan huérfanos al pie de página: reserva espacio antes
+% de cada sección y, si no cabe el título + unas líneas, salta a la página
+% siguiente. Necesario sobre todo cuando el título precede a una tabla longtable.
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pretocmd{\section}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{3\baselineskip}}{}{}
+
 % Párrafos: penalizar líneas huérfanas (club) y viudas (widow) al cambiar de
 % página: la primera línea de un párrafo no queda sola abajo, ni la última sola arriba.
 \clubpenalty=10000
