@@ -2,9 +2,9 @@
 # Boletín IES 04 - Termodinámica Financiera (2026-09-11)
 # El Conflicto Fiscal vs. Monetario
 #
-# El árbol crece hacia abajo (direction: down). Se fija el motor TALA
-# (único que permite posicionar con top/left); así B/C quedan en un mismo
-# nivel y D/D' en otro, con el conflicto trazado horizontalmente entre ambos.
+# El árbol crece hacia abajo. Se fija el motor TALA (único que permite
+# posicionar con top/left): así A/B quedan en un nivel y A'/B' en otro,
+# con el conflicto trazado horizontalmente entre ambos.
 
 vars: {
   d2-config: {
@@ -14,38 +14,43 @@ vars: {
 
 direction: down
 
-A: "Objetivo (\$O\$):\nEstabilidad Económica Sistemática" {
+O: "OBJETIVO COMÚN (O)\nEstabilidad Económica Sistémica Global" {
   top: 0
-  left: 286
+  left: 260
 }
 
-B: "Requisito A:\nMantener la solvencia del mercado de deuda\nsoberana y la liquidez del Tesoro" {
-  top: 200
+A: "REQUISITO (A)\nGarantizar solvencia y liquidez\ndel mercado de deuda pública" {
+  top: 180
   left: 0
 }
 
-C: "Requisito B:\nPreservar el poder adquisitivo\nde la moneda y contener la inflación" {
-  top: 200
-  left: 540
+B: "REQUISITO (B)\nPreservar el poder adquisitivo de\nla moneda y contener la inflación" {
+  top: 180
+  left: 480
 }
 
-D: "Prerrequisito A':\nRecomprar deuda / monetizar el déficit\n(QE o Buybacks masivos)" {
-  top: 400
+"A'": "PRERREQUISITO (A')\nRecomprar deuda / monetizar el\ndéficit (Buybacks / QE masivo)" {
+  top: 360
   left: 0
 }
 
-"D'": "Prerrequisito B':\nMantener tasas de interés elevadas\ny restringir la hoja de balance\ndel Banco Central" {
-  top: 400
-  left: 540
+"B'": "PRERREQUISITO (B')\nMantener tasas elevadas y reducir\nhoja de balance del Banco Central" {
+  top: 360
+  left: 480
 }
 
-A -> B
-A -> C
-B -> D
-C -> "D'"
+Inyeccion: "INYECCIÓN TOC PARA EVAPORAR LA NUBE:\nReorganizar la Red de Cadena de Valor Global para\ncomerciar en múltiples divisas (Transición Multipolar).\nAl eliminar el supuesto de que el Dólar es el único\nhabilitador del Throughput global, se invalida el\nconflicto entre A' y B', liberando la presión sobre\nel cuello de botella del balance sovereign de EE. UU." {
+  top: 560
+  left: 0
+}
 
-# Conflicto sistémico entre las acciones D y D'
-D <-> "D'": "CONFLICTO\nFISCAL vs. MONETARIO" {
+O -> A
+O -> B
+A -> "A'"
+B -> "B'"
+
+# Conflicto sistémico entre los prerrequisitos A' y B'
+"A'" <-> "B'": "CONFLICTO" {
   style.stroke: "#e53935"
   style.stroke-dash: 4
   style.font-color: "#e53935"

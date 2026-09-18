@@ -2,34 +2,77 @@
 # Boletín IES 04 - Termodinámica Financiera (2026-09-11)
 # Saturación de Deuda y Contagio Global
 #
-# Árbol de 4 niveles que crece hacia abajo: la restricción fundamental
-# (causa raíz) desencadena tres Efectos Indeseables (UDE), cada uno con
-# sus derivados y su resultado sistémico.
+# Árbol de Efectos Indeseables (UDE) que crece hacia abajo desde la
+# restricción fundamental. Se fija el motor TALA con top/left para
+# reproducir fielmente la disposición del ASCII original: rama fiscal
+# (UDE 1 -> Buyback/CPI -> FED) a la izquierda y rama de deuda
+# (UDE 2 -> UDE 3 -> BoJ -> Carry -> Global) a la derecha.
+
+vars: {
+  d2-config: {
+    layout-engine: tala
+  }
+}
 
 direction: down
 
-Causa: "Causa Raíz / Restricción Fundamental:\nBalance monetario mundial saturado\npara absorber deuda en USD sin respaldo\nen Throughput (\$T\$) real"
+Restriccion: "RESTRICCIÓN FUNDAMENTAL\nIncapacidad del mercado global de absorber deuda\nsoberana sin aumento de T real" {
+  top: 0
+  left: 290
+}
 
-UDE1: "UDE 1:\nIncapacidad de absorber deuda\nsoberana sin aumento de \$T\$ real"
-UDE2: "UDE 2:\nInyección de liquidez fiscal\nfinanciada con deuda del Tesoro"
-UDE3: "UDE 3:\nRendimientos de deuda europea\ny estadounidense en máximos"
+UDE1: "EFECTO INDESEARLE 1\nInyección de liquidez fiscal\nfinanciada con deuda del Tesoro" {
+  top: 200
+  left: 0
+}
 
-Causa -> UDE1
-Causa -> UDE2
-Causa -> UDE3
+UDE2: "EFECTO INDESEARLE 2\nMercado exige mayor prima por\nsaturación de Inventario (I)" {
+  top: 200
+  left: 680
+}
 
-Der1: "Derivado 1:\nEl Buyback de \$6,000M destruye el\nprecio de bonos viejos y eleva\nlos rendimientos"
-Der2: "Derivado 2:\nEl CPI repunta al 3.4% interanual\npor distorsión de precios\ny liquidez"
-Der3: "Derivado 3:\nEl BoJ forzado a subir tasas\n(1.25%), amenazando el\nYen Carry Trade"
+Buyback: "Buyback de \$6,000M\nDestruye precio de\nbonos antiguos" {
+  top: 360
+  left: 0
+}
 
-UDE1 -> Der1
-UDE2 -> Der2
-UDE3 -> Der3
+CPI: "CPI repunta a 3.4%\nInflación por exceso\nde liquidez nominal" {
+  top: 360
+  left: 260
+}
 
-Res1: "Resultado Sistémico:\nTenedores extranjeros desinvierten\nde Bonos del Tesoro de EE. UU."
-Res2: "Rediseño de Rutas de Flujo (Bypass):\nMaterias primas transadas fuera\ndel sistema SWIFT / USD"
-Res3: "Fragmentación Multipolar:\nReconfiguración de la Red de Cadena\nde Valor Global (RMB, Oro, Monedas Locales)"
+UDE3: "EFECTO INDESEARLE 3\nRendimientos de deuda en EE. UU.\ny Europa en máximos de años" {
+  top: 360
+  left: 680
+}
 
-Der1 -> Res1
-Der2 -> Res2
-Der3 -> Res3
+Fed: "REACCIÓN FED / MONETARIA\nTasas elevadas por más tiempo" {
+  top: 620
+  left: 140
+}
+
+BoJ: "PRESIÓN SOBRE EL BoJ\nBoJ forzado a subir tasa\nal 1.25% (18 de sept.)" {
+  top: 620
+  left: 680
+}
+
+Carry: "COLAPSO CARRY TRADE YEN\nRepatriación de capitales\njaponeses hacia sus JGBs" {
+  top: 800
+  left: 680
+}
+
+Global: "RESULTADO SISTÉMICO GLOBAL\nDesacoplamiento del USD y\ntransición a red multipolar" {
+  top: 980
+  left: 680
+}
+
+Restriccion -> UDE1
+Restriccion -> UDE2
+UDE1 -> Buyback
+UDE1 -> CPI
+Buyback -> Fed
+CPI -> Fed
+UDE2 -> UDE3
+UDE3 -> BoJ
+BoJ -> Carry
+Carry -> Global
