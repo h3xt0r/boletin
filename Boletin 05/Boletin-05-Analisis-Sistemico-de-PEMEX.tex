@@ -14,6 +14,12 @@
 % Español: títulos y pies ("Figura"), guionado
 \usepackage[spanish]{babel}
 
+% Párrafos: penalizar líneas huérfanas (club) y viudas (widow) al cambiar de
+% página: la primera línea de un párrafo no queda sola abajo, ni la última sola arriba.
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
 % Matemáticas (variables como T, I, neq)
 \usepackage{amsmath,amssymb}
 
