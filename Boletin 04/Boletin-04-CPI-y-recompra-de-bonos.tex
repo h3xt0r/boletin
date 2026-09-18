@@ -1,102 +1,52 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
-\documentclass[
-  11pt,
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
+% Plantilla mínima de los boletines IES (pandoc --template).
+% Solo carga lo estrictamente necesario por el contenido; la tipografía y la
+% geometría las decide LaTeX (tamaño carta, 12pt, márgenes por defecto).
+
+\documentclass[12pt,letterpaper]{article}
+
+% Codificación y acentos (pdflatex)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Fuente escalable (Latin Modern); evita las bitmap EC de METAFONT
 \usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
+
+% Español: títulos y pies ("Figura"), guionado
+\usepackage[spanish]{babel}
+
+% Matemáticas (variables como T, I, neq)
+\usepackage{amsmath,amssymb}
+
+% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos
+\usepackage{graphicx}
 \makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
-\usepackage{xcolor}
-\usepackage[letterpaper,margin=2.5cm]{geometry}
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Tablas (los boletines pueden traer tablas Markdown)
+\usepackage{longtable,booktabs,array,calc}
+
+% Pies de figura
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+% Listas compactas de Markdown
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-\usepackage[bidi=basic]{babel}
-\else
-\usepackage[bidi=default]{babel}
-\fi
-\babelprovide[main,import]{spanish}
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
-% Ajustes de calidad editorial para los boletines IES.
-% Se incluyen con: pandoc --include-in-header=assets/editorial.tex
-% Nota: pandoc ya carga `microtype` automáticamente si está disponible,
-% por eso aquí solo se afinan los pies de figura.
-\usepackage{caption}     % control de los pies de figura
-\captionsetup{font=small, labelfont=bf}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  pdflang={es},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
 
-\author{}
-\date{}
+% Enlaces y destinos (al final, como recomienda hyperref)
+\usepackage{hyperref}
 
 \begin{document}
 
-\hypertarget{termodinuxe1mica-financiera-04}{%
-\section{TERMODINÁMICA FINANCIERA
-04}\label{termodinuxe1mica-financiera-04}}
+\hypertarget{termodinuxe1mica-financiera}{%
+\section{TERMODINÁMICA FINANCIERA}\label{termodinuxe1mica-financiera}}
 
 \textbf{Boletín TOC Insights --- Septiembre 2026}
 
-\href{https://www.cnbc.com/2026/09/11/cpi-inflation-report-august-2026.html}{CPI
-index}
-
-\href{https://www.reuters.com/world/us-treasury-buy-up-6-billion-sept-10-buyback-operation-2026-09-09/}{Recompra
-de bonos}
-
-\href{https://www.euronews.com/business/2026/09/11/european-bond-yields-hit-multi-year-highs-as-global-sell-off-continues}{Bonos
-Europeos}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{titular-y-resumen-ejecutivo}{%
 \subsection{1. Titular y Resumen
@@ -109,12 +59,12 @@ Las presiones inflacionarias persistentes en EE. UU. (CPI en 3.4\%), el
 fracaso de las intervenciones de liquidez del Tesoro (\$6,000M en
 recompras), la escalada de los rendimientos europeos en máximos
 multianuales y el inminente cambio de postura del Banco de Japón (18 de
-septiembre) señalan la incapacidad del mercado monetario mundial para
-absorber deuda soberana sin respaldo en Throughput (\(T\)) productivo
-real. La economía global ha iniciado un desacoplamiento de la hegemonía
-del dólar estadounidense (similar a la transición de la libra esterlina
-entre 1946 y 1948), redirigiendo las líneas de producción hacia un
-sistema multipolar.
+septiembre) no son fenómenos aislados. Señalan la incapacidad del
+mercado monetario mundial para absorber deuda sovereign sin respaldo en
+Throughput (\(T\)) productivo real. La economía global ha iniciado un
+desacoplamiento de la hegemonía del dólar estadounidense (similar a la
+transición de la libra esterlina entre 1946 y 1948), redirigiendo las
+líneas de producción hacia un sistema multipolar.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -132,9 +82,9 @@ absorber emisiones masivas de deuda soberana de EE. UU. y Europa
 equivalente en el \emph{Throughput (\(T\))} de la economía real
 (generación neta de valor, bienes y energía).
 
-\hypertarget{matriz-de-impacto-en-los-3-paruxe1metros-clave-de-goldratt}{%
-\subsubsection{Matriz de Impacto en los 3 Parámetros Clave de
-Goldratt}\label{matriz-de-impacto-en-los-3-paruxe1metros-clave-de-goldratt}}
+\hypertarget{matriz-de-impacto-en-los-3-paruxe1metros-de-goldratt}{%
+\subsubsection{Matriz de Impacto en los 3 Parámetros de
+Goldratt}\label{matriz-de-impacto-en-los-3-paruxe1metros-de-goldratt}}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
@@ -151,13 +101,12 @@ Diagnóstico del Sistema Global
 \endlastfoot
 \textbf{Throughput (\(T\))} & \textbf{Estancado / Desacoplado:} El flujo
 nominal de crédito no genera bienes reales proporcionales. El \(T\)
-físico migra fuera del circuito de liquidación en USD hacia
-transacciones bilaterales y divisas alternativas (RMB, oro, swaps
-locales). \\
-\textbf{Inversión / Inventario (\(I\))} & \textbf{Saturado:} Acumulación
-desmedida de títulos de deuda pública atascados en balances
-institucionales y reservas de bancos centrales sin demanda privada
-suficiente al precio nominal actual. \\
+físico migra fuera del circuito clearing en USD hacia transacciones
+bilaterales y divisas alternativas (RMB, oro, swaps locales). \\
+\textbf{Inventario (\(I\))} & \textbf{Saturado:} Acumulación desmedida
+de títulos de deuda pública atascados en balances institucionales y
+reservas de bancos centrales sin demanda privada suficiente al precio
+nominal actual. \\
 \textbf{Gasto de Operación (\(OE\))} & \textbf{Desbocado:} El costo del
 servicio de deuda global se dispara a medida que los rendimientos a 10
 años (4.85\%+ en EE. UU. y máximos en Europa) incrementan la carga
@@ -166,9 +115,9 @@ fiscal del sistema. \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{procesos-de-pensamiento-thinking-processes}{%
-\subsubsection{Procesos de Pensamiento (Thinking
-Processes)}\label{procesos-de-pensamiento-thinking-processes}}
+\hypertarget{herramientas-de-procesos-de-pensamiento-thinking-processes}{%
+\subsubsection{Herramientas de Procesos de Pensamiento (Thinking
+Processes)}\label{herramientas-de-procesos-de-pensamiento-thinking-processes}}
 
 \hypertarget{uxe1rbol-de-realidad-actual-crt-saturaciuxf3n-de-deuda-y-contagio-global}{%
 \paragraph{Árbol de Realidad Actual (CRT): Saturación de Deuda y
@@ -191,15 +140,15 @@ Causa Raíz / Restricción Fundamental
 \endlastfoot
 \textbf{Efecto Indeseable 1 (UDE 1)} & \textbf{Efecto Indeseable 2 (UDE
 2)} & \textbf{Efecto Indeseable 3 (UDE 3)} \\
-Incapacidad de absorber deuda soberana sin aumento de \(T\) real. &
+Incapacidad de absorber deuda sovereign sin aumento de \(T\) real. &
 Inyección de liquidez fiscal financiada con deuda del Tesoro. &
 Rendimientos de deuda europea y estadounidense en máximos. \\
 \textbf{Derivados de UDE 1} & \textbf{Derivados de UDE 2} &
 \textbf{Derivados de UDE 3} \\
 El \emph{Buyback} de \$6,000M destruye el precio de bonos viejos y eleva
-los rendimientos. & El CPI repunta al 3.4\% interanual por distorsión de
-precios y liquidez. & El BoJ se ve forzado a subir tasas (1.25\%),
-amenazando el \emph{Yen Carry Trade}. \\
+yields. & El CPI repunta al 3.4\% interanual por distorsión de precios y
+liquidez. & El BoJ se ve forzado a subir tasas (1.25\%), amenazando el
+\emph{Yen Carry Trade}. \\
 \textbf{Resultado Sistémico} & \textbf{Rediseño de Rutas de Flujo
 (Bypass)} & \textbf{Fragmentación Multipolar} \\
 Los tenedores extranjeros desinvierten de Bonos del Tesoro de EE. UU. &
@@ -239,7 +188,7 @@ restringir la hoja de balance del Banco Central. \\
 & \textbf{Resolución del Conflicto (Inyección de Supuesto)} & \\
 \textbf{Supuesto Falso:} El Dólar es la única divisa posible para
 procesar el comercio global. & \textbf{Inyección TOC:} Diversificar el
-comercio internacional fuera de la compensación en USD (Transición
+comercio internacional fuera del clearing del USD (Transición
 Multipolar), liberando la presión sobre el cuello de botella del balance
 soberano de EE. UU. & \textbf{Falsación:} El flujo global de bienes
 (\(T\)) ignora la restricción de liquidez en USD operando con vías de
@@ -248,10 +197,10 @@ pago alternativas. \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}{%
-\subsection{3. Dicotomía Clave 1: Contabilidad de Costos Tradicional
-vs.~Contabilidad del Throughput
-(TA)}\label{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}}
+\hypertarget{contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}{%
+\subsection{3. Contabilidad de Costos Tradicional vs.~Contabilidad del
+Throughput
+(TA)}\label{contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
@@ -290,47 +239,39 @@ distribución de valor. \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}{%
-\subsection{4. Dicotomía Clave 2: Teoría Monetaria Moderna (MMT)
-vs.~Teoría de Restricciones
-(TOC)}\label{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}}
+\hypertarget{teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}{%
+\subsection{4. Teoría Monetaria Moderna (MMT) vs.~Teoría de
+Restricciones
+(TOC)}\label{teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Eje de Comparación
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Visión MMT
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Visión TOC
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Creación de Dinero y Liquidez} & El emisor soberano no enfrenta
-restricciones financieras nominales. El gasto público crea las reservas
-privadas y el volumen de deuda no es un obstáculo mientras la inflación
-esté controlada. & El dinero es un mero habilitador del flujo; la
-restricción física/productiva manda. Si la liquidez inyectada no eleva
-la capacidad del cuello de botella real, solo acumula Inventario (\(I\))
-y destruye la velocidad del Throughput (\(T\)). \\
-\textbf{Límite de la Deuda Soberana} & Determinado únicamente por el
-pleno empleo y el uso de recursos reales de la economía doméstica. &
-Determinado por la capacidad del mercado monetario global para absorber
-los títulos sin disparar las primas de riesgo ni colapsar el valor del
-activo de reserva. \\
-\textbf{Contraste de Supuestos sobre el Escenario Actual} & Asume que
-EE. UU. puede emitir deuda indefinidamente a bajo costo para financiar
-déficits, ya que la demanda de dólares se autorregula vía impuestos y
-autoridad legal. & Demuestra que el mercado global ha dejado de absorber
-liquidez nominal no vinculada a bienes tangibles, castigando los títulos
-soberanos con rendimientos del 4.85\%+ e imponiendo un límite físico
-infranqueable a la soberanía monetaria no respaldada por \(T\). \\
-\end{longtable}
+\begin{figure}
+\centering
+\includegraphics{Diagramas/mmt-vs-toc.pdf}
+\caption{Creación de dinero/liquidez: Visión MMT vs.~Visión TOC}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión MMT:} Postula que el emisor soberano de moneda no
+  enfrenta restricciones financieras nominales. Sostiene que el déficit
+  público crea las reservas privadas y que el volumen de deuda no es un
+  obstáculo mientras la inflación esté bajo control.
+\item
+  \textbf{Visión TOC:} Demuestra que \textbf{el dinero es únicamente un
+  medio de transporte del flujo, no la restricción misma}. Si la emisión
+  monetaria supera la capacidad de producción del cuello de botella real
+  de la economía, el dinero extra no genera valor; simplemente se
+  acumula como \emph{Inventario Financiero (\(I\))} tóxico y destruye la
+  velocidad del \emph{Throughput (\(T\))} mediante inflación e
+  incrementos de las tasas de interés.
+\item
+  \textbf{El Veredicto:} El escenario actual de 2026 invalida el
+  supuesto central de la MMT: el mercado global ha dejado de absorber
+  liquidez nominal no vinculada a bienes tangibles, castigando los
+  títulos soberanos con yields del 4.85\%+ e imponiendo un límite físico
+  infranqueable a la soberanía monetaria no respaldada por \(T\).
+\end{itemize}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -338,6 +279,10 @@ infranqueable a la soberanía monetaria no respaldada por \(T\). \\
 \subsection{5. Conclusión y Prescripción Estratégica (Los 5 Pasos de
 Enfoque de
 Goldratt)}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-los-5-pasos-de-enfoque-de-goldratt}}
+
+Para navegar la transición monetaria multipolar y la crisis de
+saturación de deuda, la gestión macroeconómica y financiera debe aplicar
+los \textbf{5 Pasos de Enfoque}:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -356,7 +301,7 @@ Goldratt)}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-los-5-pasos-de-e
   \textbf{Subordinar todo lo demás a la Restricción:} Redireccionar las
   políticas del Banco Central y del Tesoro para alinearlas con el flujo
   real. Dejar de simular demanda mediante intervenciones cosméticas como
-  recompras de \$6,000M que distorsionan el mercado de bonos.
+  \emph{buybacks} de \$6,000M que distorsionan el mercado de bonos.
 \item
   \textbf{Elevar la Restricción:} Diversificar las plataformas de
   intercambio global. Adoptar acuerdos multilaterales de compensación en
@@ -367,8 +312,8 @@ Goldratt)}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-los-5-pasos-de-e
 \item
   \textbf{Si la Restricción se ha roto, Volver al Paso 1 (Prevenir la
   Inercia):} Una vez que el comercio mundial se desacople de la
-  dependencia exclusiva del dólar, evitar que la inercia cree un nuevo
-  cuello de botella de sobre-emisión dentro de los nuevos bloques
+  dependencia exclusiva del dólar, no permitir que la inercia cree un
+  nuevo cuello de botella de sobre-emisión dentro de los nuevos bloques
   económicos multipolares.
 \end{enumerate}
 

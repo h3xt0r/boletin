@@ -31,8 +31,9 @@ pandoc y `pdflatex`. Cada boletín vive en su propio directorio `Boletin NN/`.
    El `.md` de trabajo (sin fecha) se genera desde la fuente (con fecha)
    sustituyendo cada bloque ` ```text ` / ` ```d2 ` por su referencia; la fuente
    nunca se modifica.
-2. **No** añadas `{width=...}`: deja que LaTeX escale. La plantilla de pandoc
-   ajusta la imagen al ancho de caja con `keepaspectratio` y no la deforma.
+2. **No** añadas `{width=...}`: deja que LaTeX escale. La plantilla
+   (`assets/boletin.tex`) ajusta la imagen al ancho de caja con `keepaspectratio`
+   y no la deforma.
 3. **Escapa los importes en dólares** del `.md` de trabajo como `\$` antes de
    compilar (`\$6,000M`, `\$160 billones`), reservando `$...$` para las variables
    (`$T$`, `$I$`, `$\neq$`). Ver *Claves de calidad editorial*.
@@ -45,10 +46,8 @@ PDF tamaño carta con el motor `pdflatex` (usa `<Boletin NN>/<archivo>.md`):
 pandoc "<Boletin NN>/<archivo>.md" \
   --from=markdown+tex_math_dollars \
   --resource-path="<Boletin NN>" \
+  --template=.opencode/skills/boletin-latex-pdf/assets/boletin.tex \
   --pdf-engine=pdflatex \
-  -V geometry:letterpaper -V geometry:margin=2.5cm \
-  -V fontsize=11pt -V lang=es \
-  --include-in-header=.opencode/skills/boletin-latex-pdf/assets/editorial.tex \
   -o "<Boletin NN>/<salida>.pdf"
 ```
 
@@ -57,10 +56,8 @@ Documento LaTeX standalone:
 ```bash
 pandoc "<Boletin NN>/<archivo>.md" \
   --from=markdown+tex_math_dollars --resource-path="<Boletin NN>" \
+  --template=.opencode/skills/boletin-latex-pdf/assets/boletin.tex \
   -s -t latex --pdf-engine=pdflatex \
-  -V geometry:letterpaper -V geometry:margin=2.5cm \
-  -V fontsize=11pt -V lang=es \
-  --include-in-header=.opencode/skills/boletin-latex-pdf/assets/editorial.tex \
   -o "<Boletin NN>/<salida>.tex"
 ```
 
@@ -75,11 +72,17 @@ en el directorio del boletín.
   con otro `$` válido más adelante en el párrafo y volver matemático todo lo de en
   medio (caso real en Boletín 04 con `\$6,000M en recompras`).
 - **`--resource-path`**: resuelve las imágenes relativas al directorio del boletín.
-- **Tamaño carta**: `-V geometry:letterpaper -V geometry:margin=2.5cm`.
-- **Idioma**: `-V lang=es` (títulos y pies en español).
-- **`assets/editorial.tex`**: `caption` (pies de figura en cuerpo menor y etiqueta
-  en negrita). Pandoc ya carga `microtype` por su cuenta si está disponible.
-- La imagen se convierte en figura con pie automático: `Figura N: <texto alterno>`.
+- **Plantilla mínima `assets/boletin.tex`**: se pasa con `--template` y solo carga lo
+  estrictamente necesario (fuente, acentos, español, matemáticas, gráficos, tablas,
+  enlaces y pies de figura). Tamaño carta y 12 pt en el propio
+  `\documentclass[12pt,letterpaper]{article}`; la **geometría y la tipografía quedan
+  a cargo de LaTeX** (no se pasan `geometry` ni `fontsize` por línea de comandos).
+  Cuidado: en una plantilla de pandoc los `$…$` de los comentarios se interpretan
+  como variables, así que no deben aparecer en el texto.
+- **Idioma español**: `\usepackage[spanish]{babel}` vive en la plantilla (títulos,
+  guionado y pies "Figura N:").
+- **Pies de figura**: `\usepackage{caption}` + `\captionsetup{font=small,labelfont=bf}`
+  en la plantilla (sustituyó al antiguo `assets/editorial.tex`).
 
 ## Convenciones de nombre
 

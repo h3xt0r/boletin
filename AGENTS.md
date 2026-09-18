@@ -67,9 +67,10 @@ Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del bol
      `$OE$`). Un `$` suelto puede cerrarse con cualquier `$` posterior válido del
      mismo párrafo y volver matemático todo el texto intermedio (caso Boletín 04).
    - `make boletin` compila el `.md` de trabajo con pandoc (`pdflatex`,
-     `letterpaper`, `lang=es`, `--from=markdown+tex_math_dollars`). El script
-     añade `--resource-path` con el directorio del boletín. Genera también el
-     `.tex` standalone.
+     `--from=markdown+tex_math_dollars`) usando la plantilla mínima
+     `assets/boletin.tex` (carta, 12 pt, español; la tipografía y la geometría las
+     decide LaTeX). El script añade `--resource-path` con el directorio del
+     boletín. Genera también el `.tex` standalone.
 
 ### Atajos con make
 
@@ -93,7 +94,10 @@ make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas
   El `.md` de trabajo se puede regenerar desde la fuente en cualquier momento.
 - No editar a mano los archivos generados (`.pdf`, `.tex`, `.svg`).
 - Archivos de salida sin `:` ni espacios (`Boletin-02-Mercado-de-Bonos.pdf`).
-- PDF tamaño carta (`612 x 792 pt`), márgenes de 2.5 cm, 11 pt, idioma español.
+- PDF tamaño carta (`612 x 792 pt`) y 12 pt, con la tipografía y la geometría a
+  cargo de LaTeX: la plantilla mínima `assets/boletin.tex` fija solo el tamaño de
+  papel y cuerpo (`\documentclass[12pt,letterpaper]{article}`); no se imponen
+  márgenes ni tamaños de letra por línea de comandos.
 - Diagramas **vectoriales**; nunca PNG para el PDF final.
 - El escalado de las imágenes lo hace LaTeX: no fijar `width`.
 - El `.tex` usa rutas `Diagramas/...`: compílalo desde el directorio de su boletín.

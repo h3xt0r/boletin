@@ -10,10 +10,14 @@
 # mismo directorio. Las imágenes del .md se resuelven relativas a ese directorio,
 # de modo que el boletín puede vivir en su propia carpeta (p. ej. "Boletin 02").
 #
+# La tipografía y la geometría las decide LaTeX a partir de la plantilla mínima
+# assets/boletin.tex (carta, 12pt, español): aquí no se imponen tamaños de letra
+# ni márgenes.
+#
 set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-header="$script_dir/../assets/editorial.tex"
+template="$script_dir/../assets/boletin.tex"
 
 uso() {
   echo "Uso: $(basename "$0") <boletin.md> [salida_base] [--pdf|--tex|--ambos]" >&2
@@ -26,7 +30,7 @@ src="$1"
 mode="${3:---ambos}"
 srcdir="$(dirname "$src")"
 [[ -f "$src" ]] || { echo "Error: no existe '$src'" >&2; exit 1; }
-[[ -f "$header" ]] || { echo "Error: no existe el encabezado editorial '$header'" >&2; exit 1; }
+[[ -f "$template" ]] || { echo "Error: no existe la plantilla '$template'" >&2; exit 1; }
 
 # salida_base: parámetro, o nombre saneado en el mismo directorio del .md
 if [[ -n "${2:-}" ]]; then
@@ -60,11 +64,7 @@ opciones=(
   # y volver matemático el texto intermedio (caso Boletín 04).
   --from=markdown+tex_math_dollars
   --resource-path="$srcdir"
-  -V geometry:letterpaper
-  -V geometry:margin=2.5cm
-  -V fontsize=11pt
-  -V lang=es
-  --include-in-header="$header"
+  --template="$template"
 )
 
 if [[ "$mode" == "--pdf" || "$mode" == "--ambos" ]]; then

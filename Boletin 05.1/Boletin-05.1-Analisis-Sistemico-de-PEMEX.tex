@@ -1,88 +1,43 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
-\documentclass[
-  11pt,
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
+% Plantilla mínima de los boletines IES (pandoc --template).
+% Solo carga lo estrictamente necesario por el contenido; la tipografía y la
+% geometría las decide LaTeX (tamaño carta, 12pt, márgenes por defecto).
+
+\documentclass[12pt,letterpaper]{article}
+
+% Codificación y acentos (pdflatex)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Fuente escalable (Latin Modern); evita las bitmap EC de METAFONT
 \usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\usepackage[letterpaper,margin=2.5cm]{geometry}
+
+% Español: títulos y pies ("Figura"), guionado
+\usepackage[spanish]{babel}
+
+% Matemáticas (variables como T, I, neq)
+\usepackage{amsmath,amssymb}
+
+% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+% Tablas (los boletines pueden traer tablas Markdown)
+\usepackage{longtable,booktabs,array,calc}
+
+% Pies de figura
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+% Listas compactas de Markdown
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-\usepackage[bidi=basic]{babel}
-\else
-\usepackage[bidi=default]{babel}
-\fi
-\babelprovide[main,import]{spanish}
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
-% Ajustes de calidad editorial para los boletines IES.
-% Se incluyen con: pandoc --include-in-header=assets/editorial.tex
-% Nota: pandoc ya carga `microtype` automáticamente si está disponible,
-% por eso aquí solo se afinan los pies de figura.
-\usepackage{caption}     % control de los pies de figura
-\captionsetup{font=small, labelfont=bf}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  pdflang={es},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
 
-\author{}
-\date{}
+% Enlaces y destinos (al final, como recomienda hyperref)
+\usepackage{hyperref}
 
 \begin{document}
 
