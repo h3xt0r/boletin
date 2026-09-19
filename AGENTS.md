@@ -45,8 +45,8 @@ Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del bol
    (diagramas ` ```text ` o ` ```d2 `). No se toca; el pipeline nunca la modifica.
 
 2. **Diagramas** — carga la skill `diagramas-d2-pdf`:
-   - Si la fuente trae bloques ` ```d2 ` (p. ej. `Boletin 05.1`), `make trabajo`
-     ejecuta `extraer-d2.sh "<fuente>.md" "<trabajo>.md"`: numera
+   - Si la fuente trae bloques ` ```d2 `, `make trabajo` ejecuta
+     `extraer-d2.sh "<fuente>.md" "<trabajo>.md"`: numera
      `Diagramas/figura-<N>.d2`, valida la compilación con `d2`, escapa el `$`
      suelto de las etiquetas y escribe el `.md` de trabajo con
      `![<pie>](Diagramas/figura-<N>.pdf)`.
