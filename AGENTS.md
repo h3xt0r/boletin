@@ -75,6 +75,22 @@ Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del bol
      vive en `.opencode/skills/boletin-latex-pdf/assets/membrete.pdf`). Genera
      también el `.tex` standalone.
 
+4. **Publicación web** — `make publicar` (mismo `BOLETIN`) ejecuta
+   `scripts/publicar-web.sh`, que **se corre aquí en desarrollo y escribe en el
+   repo del sitio** `~/Git/iesencial.com` (`WEB_REPO`, ajustable):
+   - Genera la copia web `boletin/YYYY-MM-DD-Boletin-NN: Nombre.md` a partir del
+     `.md` de trabajo: la fecha se toma del prefijo de la fuente, las ligas
+     `Diagramas/<figura>.pdf` → `diagramas/<slug>/<figura>.svg` (slug = nombre de
+     trabajo saneado) y se desescapan los `\$` → `$` (la web no usa el escape de
+     LaTeX; `content.js` decide qué `$...$` es matemática).
+   - Copia los `.svg` a `boletin/diagramas/<slug>/` y verifica que cada diagrama
+     referenciado tenga su `.svg`.
+   - Este repo **no vive en el servidor** (sus PDFs pesan y el espacio es
+     limitado): por eso la herramienta de publicación vive aquí (desarrollo) y
+     no en `iesencial.com`, cuyo repo es el único que el servidor clona. El
+     `deploy.sh` del sitio detecta los diagramas solo (globea
+     `boletin/diagramas/*/*.svg`).
+
 ### Atajos con make
 
 `BOLETIN` elige el directorio del boletín; por defecto, el `Boletin NN` más reciente.
@@ -85,6 +101,7 @@ make diagramas                            # .d2 -> .svg + .pdf de BOLETIN/Diagra
 make boletin                              # compila el .md de trabajo del boletín
 make boletin WORK="Boletin 02/Boletin-02: Mercado de Bonos.md"
 make todo BOLETIN="Boletin 03"            # trabajo + diagramas + boletín
+make publicar BOLETIN="Boletin 03"        # copia web + SVG -> iesencial.com (dev)
 make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas/
 ```
 
