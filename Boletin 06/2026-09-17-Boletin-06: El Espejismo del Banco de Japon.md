@@ -18,19 +18,13 @@ La restricción fundamental de Japón no es el nivel nominal de su tasa de inter
 
 ```d2
 # Nube de evaporación: El dilema del Banco de Japón ante el tipo de cambio y la economía interna
-vars: {
-  d2-config: {
-    layout-engine: tala
-  }
-}
-
 direction: down
 
-A: "Garantizar la estabilidad macroeconómica y el poder de compra de Japón" { top: 0    ; left: 210 }
-B: "Normalizar la política monetaria y subir tipos agresivamente" { top: 170 ; left: 0    }
-C: "Mantener tipos bajos o subidas tibias (25 bps)" { top: 170 ; left: 360 }
-D: "Frenar la depreciación del yen y la inflación importada" { top: 340 ; left: 0    }
-"D'": "Evitar asfixiar hipotecas, PyMEs y el servicio de la deuda pública" { top: 340 ; left: 360 }
+A: "Garantizar la estabilidad macroeconómica\ny el poder de compra de Japón"
+B: "Normalizar la política monetaria\ny subir tipos agresivamente"
+C: "Mantener tipos bajos\no subidas tibias (25 bps)"
+D: "Frenar la depreciación del yen\ny la inflación importada"
+"D'": "Evitar asfixiar hipotecas, PyMEs\ny el servicio de la deuda pública"
 
 A -> B
 A -> C
