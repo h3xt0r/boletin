@@ -133,39 +133,8 @@ A -> B
 9. Montos en dólares se escriben literales (ej. `$6,000M`); el pipeline los escapa al extraer.
 10. El bloque debe ser d2lang válido: **un error de sintaxis aborta el procesamiento del boletín** (la extracción valida cada bloque antes de continuar).
 
-## Nubes de evaporación (arboles con arista de conflicto)
+Notas:
 
-La arista de conflicto (`D <-> D'`) crea un ciclo y los motores `dagre`/`elk`
-escalonan los niveles (C y D terminan en pisos distintos). Para dejar B/C en un
-nivel y D/D' en otro, fija el motor **TALA** y posiciona los nodos con `top`/`left`:
-
-````d2
-# Nube de evaporación
-vars: {
-  d2-config: {
-    layout-engine: tala
-  }
-}
-
-direction: down
-
-A: "Meta"        { top: 0   ; left: 210 }
-B: "Requisito 1" { top: 170 ; left: 0   }
-C: "Requisito 2" { top: 170 ; left: 360 }
-D: "Acción 1"    { top: 340 ; left: 0   }
-"D'": "Acción 2" { top: 340 ; left: 360 }
-
-A -> B
-A -> C
-B -> D
-C -> "D'"
-D <-> "D'": "CONFLICTO\nSISTÉMICO" {
-  style.stroke: "#e53935"
-  style.stroke-dash: 4
-}
-````
-
-Detalles útiles:
-
+- **No uses posiciones manuales (`top`/`left`), ni fijes el motor TALA ni ningún layout-engine**: el layout lo resuelve el motor por defecto. Las posiciones manuales con etiquetas largas sacan el texto de las cajas (lo descuadra); el diagrama debe venir listo tal cual se publica.
+- Con la arista de conflicto (`D <-> D'`) el motor por defecto puede colocar los niveles de forma escalonada; eso es aceptable, no lo intentes corregir con posiciones.
 - Un rótulo largo en una arista conviene partirlo: `"CONFLICTO\nSISTÉMICO"`.
-- Deja separación horizontal suficiente para que el rótulo entre entre D y D'.
