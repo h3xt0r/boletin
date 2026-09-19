@@ -1,0 +1,240 @@
+% Plantilla mínima de los boletines IES (pandoc --template).
+% Solo carga lo estrictamente necesario por el contenido; la tipografía y la
+% geometría las decide LaTeX (tamaño carta, 12pt, márgenes por defecto).
+
+\documentclass[12pt,letterpaper]{article}
+
+% Codificación y acentos (pdflatex)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Fuente escalable (Latin Modern); evita las bitmap EC de METAFONT
+\usepackage{lmodern}
+
+% Español: títulos y pies ("Figura"), guionado
+\usepackage[spanish]{babel}
+
+% Secciones sin numeración automática (equivalente a \section*{...}): solo se
+% muestran los números que el markdown escribe a mano ("1.", "2.", "A.", ...).
+\setcounter{secnumdepth}{-1}
+
+% Los títulos nunca quedan huérfanos al pie de página: reserva espacio antes
+% de cada sección y, si no cabe el título + unas líneas, salta a la página
+% siguiente. Necesario sobre todo cuando el título precede a una tabla longtable.
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pretocmd{\section}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{3\baselineskip}}{}{}
+
+% Párrafos: penalizar líneas huérfanas (club) y viudas (widow) al cambiar de
+% página: la primera línea de un párrafo no queda sola abajo, ni la última sola arriba.
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Matemáticas (variables como T, I, neq)
+\usepackage{amsmath,amssymb}
+
+% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Fondo: membrete a página completa (carta) en TODAS las hojas. La ruta la
+% inyecta build-boletin.sh con -V membrete=<ruta absoluta>; si la variable no
+% se define, el fondo simplemente no se carga. Ojo: en un template de pandoc
+% los signos de dolar se interpretan como variables de template, incluso en los
+% comentarios; por eso aqui no debe aparecer ningun signo de dolar suelto
+% aparte de la variable membrete del bloque condicional.
+\usepackage{background}
+% NOTA: hay que dar width Y height explicitos (paperwidth x paperheight). Las
+% claves globales de Gin (width=\maxwidth, height=\maxheight, keepaspectratio)
+% fijadas mas arriba para los diagramas se aplican por defecto a todo
+% \includegraphics; con solo width=\paperwidth el fondo quedaria reducido al
+% area de texto (margenes). Con ambas dimensiones explicitas y la misma
+% proporcion carta del membrete, llena la pagina sin deformar ni recortar.
+\backgroundsetup{
+  scale=1,
+  angle=0,
+  opacity=1,
+  contents={\includegraphics[width=\paperwidth,height=\paperheight]{/home/kritt/Git/boletin/.opencode/skills/boletin-latex-pdf/assets/membrete.pdf}}
+}
+
+% Tablas (los boletines pueden traer tablas Markdown)
+\usepackage{longtable,booktabs,array,calc}
+
+% Pies de figura
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+% Listas compactas de Markdown
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Enlaces y destinos (al final, como recomienda hyperref)
+\usepackage{hyperref}
+
+\begin{document}
+
+\hypertarget{termodinamica-financiera-06-el-espejismo-de-los-25-puntos-base-del-banco-de-japuxf3n}{%
+\section{Termodinamica Financiera 06: El Espejismo de los 25 Puntos Base
+del Banco de
+Japón}\label{termodinamica-financiera-06-el-espejismo-de-los-25-puntos-base-del-banco-de-japuxf3n}}
+
+\href{https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/}{BoJ
+sube a 1.25}
+
+\hypertarget{resumen-ejecutivo}{%
+\subsection{1. Resumen Ejecutivo}\label{resumen-ejecutivo}}
+
+La decisión del Banco de Japón (BOJ) de elevar los tipos de interés en
+25 puntos base hasta el 1.25\% ---un máximo de 31 años--- fue
+interpretada por los mercados como una señal ``tibia''. En lugar de
+estabilizar el sistema, esta medida cosmética profundiza la debilidad
+del yen, estimula la permanencia del \emph{carry trade} y obliga al
+Ministerio de Finanzas a sopesar la venta masiva de bonos del Tesoro de
+EE. UU., provocando ondas expansivas de inestabilidad en la liquidez
+global.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{diagnuxf3stico-del-sistema-seguxfan-toc}{%
+\subsection{2. Diagnóstico del Sistema según
+TOC}\label{diagnuxf3stico-del-sistema-seguxfan-toc}}
+
+La restricción fundamental de Japón no es el nivel nominal de su tasa de
+interés, sino \textbf{la vulnerabilidad estructural de su cadena de
+valor frente a la dependencia energética exterior} y la incapacidad de
+su capacidad productiva interna para generar un flujo neto positivo
+(\emph{Throughput}) ante la erosión de su moneda.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Throughput (\(T\)):} Estrangulado por el encarecimiento de los
+  insumos dolarizados (energía y materias primas) debido a un yen
+  debilitado artificialmente.
+\item
+  \textbf{Inversión / Inventario (\(I\)):} Capital inmovilizado en
+  desequilibrios cambiarios, bonos estatales y posiciones especulativas
+  masivas en dólares apalancadas en yenes.
+\item
+  \textbf{Gasto de Operación (\(OE\)):} Incrementado marginalmente por
+  la subida de tipos (mayor coste de servicio de la deuda y de las
+  hipotecas), sin ensanchar la capacidad del cuello de botella real de
+  la economía.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Diagramas/figura-1.pdf}
+\caption{Nube de evaporación: El dilema del Banco de Japón ante el tipo
+de cambio y la economía interna}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}{%
+\subsection{3. Dicotomía Clave 1: Contabilidad de Costos Tradicional
+vs.~Contabilidad del Throughput
+(TA)}\label{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión de la Contabilidad de Costos Tradicional:} Evalúa la
+  subida de 25 puntos base como un ajuste porcentual lineal de los
+  costes de financiación. Los analistas tradicionales miden la
+  ``eficiencia'' de la medida calculando el diferencial de tasas de
+  interés puro frente a la Reserva Federal, asumiendo que los mercados
+  responden estáticamente a hojas de cálculo de optimización de costes
+  de endeudamiento.
+\item
+  \textbf{Visión de la Contabilidad del Throughput (TA):} Bajo la
+  perspectiva de Goldratt, los mercados no responden a la magnitud
+  numérica de un ajuste local de tasas, sino al \textbf{efecto sistémico
+  sobre la velocidad del flujo financiero y comercial}. Un incremento de
+  25 bps es un movimiento local cosmético incapaz de alterar el
+  rendimiento de las restricciones del sistema productivo japonés.
+  Mientras la generación de valor neto a través de exportaciones reales
+  no supere el coste de los cuellos de botella externos, manipular el
+  tipo de interés nominal es simplemente mover dinero de bolsillo sin
+  acelerar el flujo real de riqueza.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}{%
+\subsection{4. Dicotomía Clave 2: Teoría Monetaria Moderna (MMT)
+vs.~Teoría de Restricciones
+(TOC)}\label{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión MMT:} Sostiene que, al ser Japón un emisor soberano de
+  su propia moneda, no enfrenta restricciones financieras nominales ni
+  riesgo de insolvencia en yenes. Desde este enfoque, el foco no debería
+  ser subir tipos para ``defender'' la paridad cambiaria o atraer
+  capitales especulativos, sino gestionar los recursos reales de la
+  economía mediante política fiscal, utilizando los impuestos para
+  modular la demanda agregada si esta superara la capacidad productiva
+  real.
+\item
+  \textbf{Visión TOC:} Aunque la MMT acierta en que el dinero soberano
+  no tiene un límite financiero nominal, ignora la \textbf{restricción
+  física de los recursos y la dependencia crítica del exterior}. Japón
+  importa prácticamente la totalidad de su energía y materias primas. Si
+  el poder de compra del yen colapsa, el \emph{Throughput} físico se
+  desmorona porque se requieren más bienes y exportaciones reales solo
+  para pagar la misma factura energética básica. Para TOC, la
+  restricción no es la capacidad contable del emisor soberano, sino la
+  \textbf{capacidad del sistema físico para generar valor neto real}
+  frente a un entorno exterior desfavorable.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}{%
+\subsection{5. Conclusión y Prescripción Estratégica (5 Pasos de Enfoque
+de
+Goldratt)}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Identificar la restricción:} El cuello de botella real de
+  Japón no es la cotización del yen ni la falta de reservas, sino la
+  \textbf{baja competitividad estructural y la dependencia energética
+  exterior}, agravadas por un diferencial de tasas insostenible con
+  Occidente.
+\item
+  \textbf{Explotar la restricción:} Maximizar la eficiencia de los
+  recursos actuales reconociendo que las intervenciones físicas en el
+  mercado de divisas (como la quema de bonos de EE. UU.) solo compran
+  tiempo, pero no generan valor por sí mismas.
+\item
+  \textbf{Subordinar todo lo demás a la restricción:} Alinear la
+  política fiscal y monetaria. Si el BOJ actúa con timidez (subidas de
+  25 bps) mientras el Ministerio de Finanzas quema bonos del Tesoro
+  estadounidense para defender el tipo de cambio, las políticas entran
+  en contradicción sistémica, anulando mutuamente sus esfuerzos.
+\item
+  \textbf{Elevar la restricción:} Romper el ciclo de dependencia
+  energética modernizando la matriz productiva interna y permitiendo una
+  normalización de tasas decidida que atraiga flujos de capital real en
+  lugar de depender de parches artificiales.
+\item
+  \textbf{Prevenir la inercia:} Abandonar el dogma de que ``una moneda
+  débil siempre beneficia automáticamente a las exportaciones'', una
+  métrica obsoleta de la contabilidad de costos local que ignora el daño
+  neto que la inflación importada inflige al \emph{Throughput} sistémico
+  global.
+\end{enumerate}
+
+\end{document}

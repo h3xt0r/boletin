@@ -1,0 +1,24 @@
+# Nube de evaporación: El dilema del Banco de Japón ante el tipo de cambio y la economía interna
+vars: {
+  d2-config: {
+    layout-engine: tala
+  }
+}
+
+direction: down
+
+A: "Garantizar la estabilidad macroeconómica y el poder de compra de Japón" { top: 0    ; left: 210 }
+B: "Normalizar la política monetaria y subir tipos agresivamente" { top: 170 ; left: 0    }
+C: "Mantener tipos bajos o subidas tibias (25 bps)" { top: 170 ; left: 360 }
+D: "Frenar la depreciación del yen y la inflación importada" { top: 340 ; left: 0    }
+"D'": "Evitar asfixiar hipotecas, PyMEs y el servicio de la deuda pública" { top: 340 ; left: 360 }
+
+A -> B
+A -> C
+B -> D
+C -> "D'"
+D <-> "D'": "CONFLICTO\nSISTÉMICO:\n¿Priorizar paridad cambiaria o alivio financiero interno?" {
+  style.stroke: "#e53935"
+  style.stroke-dash: 4
+}
+
