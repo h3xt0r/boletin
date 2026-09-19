@@ -44,6 +44,26 @@
 \makeatother
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
+% Fondo: membrete a página completa (carta) en TODAS las hojas. La ruta la
+% inyecta build-boletin.sh con -V membrete=<ruta absoluta>; si la variable no
+% se define, el fondo simplemente no se carga. Ojo: en un template de pandoc
+% los signos de dolar se interpretan como variables de template, incluso en los
+% comentarios; por eso aqui no debe aparecer ningun signo de dolar suelto
+% aparte de la variable membrete del bloque condicional.
+\usepackage{background}
+% NOTA: hay que dar width Y height explicitos (paperwidth x paperheight). Las
+% claves globales de Gin (width=\maxwidth, height=\maxheight, keepaspectratio)
+% fijadas mas arriba para los diagramas se aplican por defecto a todo
+% \includegraphics; con solo width=\paperwidth el fondo quedaria reducido al
+% area de texto (margenes). Con ambas dimensiones explicitas y la misma
+% proporcion carta del membrete, llena la pagina sin deformar ni recortar.
+\backgroundsetup{
+  scale=1,
+  angle=0,
+  opacity=1,
+  contents={\includegraphics[width=\paperwidth,height=\paperheight]{/home/kritt/Git/boletin/.opencode/skills/boletin-latex-pdf/assets/membrete.pdf}}
+}
+
 % Tablas (los boletines pueden traer tablas Markdown)
 \usepackage{longtable,booktabs,array,calc}
 

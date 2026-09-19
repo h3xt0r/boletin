@@ -8,5 +8,8 @@
 *.pdf
 *.svg
 
+# El membrete es un asset de diseño (no un generado): se versiona aunque *.pdf lo ignore
+!.opencode/skills/boletin-latex-pdf/assets/membrete.pdf
+
 # Sistema
 .DS_Store

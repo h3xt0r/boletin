@@ -48,6 +48,7 @@ pandoc "<Boletin NN>/<archivo>.md" \
   --resource-path="<Boletin NN>" \
   --template=.opencode/skills/boletin-latex-pdf/assets/boletin.tex \
   --pdf-engine=pdflatex \
+  -V membrete=".opencode/skills/boletin-latex-pdf/assets/membrete.pdf" \
   -o "<Boletin NN>/<salida>.pdf"
 ```
 
@@ -58,6 +59,7 @@ pandoc "<Boletin NN>/<archivo>.md" \
   --from=markdown+tex_math_dollars --resource-path="<Boletin NN>" \
   --template=.opencode/skills/boletin-latex-pdf/assets/boletin.tex \
   -s -t latex --pdf-engine=pdflatex \
+  -V membrete=".opencode/skills/boletin-latex-pdf/assets/membrete.pdf" \
   -o "<Boletin NN>/<salida>.tex"
 ```
 
@@ -79,6 +81,17 @@ en el directorio del boletín.
   a cargo de LaTeX** (no se pasan `geometry` ni `fontsize` por línea de comandos).
   Cuidado: en una plantilla de pandoc los `$…$` de los comentarios se interpretan
   como variables, así que no deben aparecer en el texto.
+- **Membrete de fondo**: la plantilla lleva `\usepackage{background}` y pinta
+  `membrete.pdf` a página completa en **todas las hojas**. La ruta se inyecta
+  como variable de template con `-V membrete=<ruta>` (el script la pasa
+  automáticamente con ruta absoluta, porque `pdflatex` corre desde un
+  directorio temporal y los recursos del preámbulo no se copian). Si no se
+  define la variable, el fondo simplemente no se carga (`$if(membrete)$`).
+  El membrete es **raster** (2550×3300 @300 dpi, exportado de LibreOffice):
+  los diagramas siguen siendo 100 % vectoriales. Detalle: el `\includegraphics`
+  del fondo pasa `width=\paperwidth,height=\paperheight` **explícitos**, porque
+  las claves globales `\setkeys{Gin}` (que ajustan los diagramas al área de
+  texto) limitarían el fondo a los márgenes si se dejara solo el ancho.
 - **Idioma español**: `\usepackage[spanish]{babel}` vive en la plantilla (títulos,
   guionado y pies "Figura N:").
 - **Pies de figura**: `\usepackage{caption}` + `\captionsetup{font=small,labelfont=bf}`
@@ -104,8 +117,15 @@ El `.md` de trabajo ya no lleva la fecha; el script sanea el resto:
 ```bash
 pdfinfo "<salida>.pdf" | grep -E "Pages|Page size"   # letter: 612 x 792 pts
 pdftotext -layout "<salida>.pdf" - | head             # acentos y cifras correctos
-pdfimages -list "<salida>.pdf"                        # 0 imágenes raster (diagrama 100% vectorial)
+pdfimages -list "<salida>.pdf"                        # N imágenes raster = N páginas (1 por página: el membrete de fondo)
 ```
 
+El membrete de fondo aparece como **1 imagen raster por página** (2550×3300
+@300 dpi) en `pdfimages`; los diagramas son contenido vectorial (texto
+seleccionable en `pdftotext`, sin raster propio).
+
 El `.tex` referencia las imágenes como `Diagramas/...`: compílalo desde el directorio
-de su boletín (`cd "<Boletin NN>" && pdflatex "<salida>.tex"`).
+de su boletín (`cd "<Boletin NN>" && pdflatex "<salida>.tex"`). Ojo: el `.tex`
+lleva la ruta **absoluta** del membrete de fondo (inyectada por el script); si se
+compila en otra máquina o el repo se movió, regenera con `make boletin` o ajusta el
+`\includegraphics` de `\backgroundsetup`.

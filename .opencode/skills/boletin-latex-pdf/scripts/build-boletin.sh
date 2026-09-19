@@ -32,6 +32,18 @@ srcdir="$(dirname "$src")"
 [[ -f "$src" ]] || { echo "Error: no existe '$src'" >&2; exit 1; }
 [[ -f "$template" ]] || { echo "Error: no existe la plantilla '$template'" >&2; exit 1; }
 
+# Membrete de fondo (todas las hojas): vive junto a la plantilla. Se pasa como
+# variable de template con RUTA ABSOLUTA porque pandoc ejecuta pdflatex desde
+# un directorio temporal y no copia los recursos del preámbulo (solo los del
+# cuerpo, via --resource-path).
+membrete="$script_dir/../assets/membrete.pdf"
+if [[ ! -f "$membrete" ]]; then
+  echo "Error: no existe el membrete de fondo '$membrete'" >&2
+  echo "Cópialo junto a la plantilla: .opencode/skills/boletin-latex-pdf/assets/membrete.pdf" >&2
+  exit 1
+fi
+membrete_abs="$(cd -- "$(dirname -- "$membrete")" && pwd)/$(basename -- "$membrete")"
+
 # salida_base: parámetro, o nombre saneado en el mismo directorio del .md
 if [[ -n "${2:-}" ]]; then
   base="$2"
@@ -65,6 +77,8 @@ opciones=(
   --from=markdown+tex_math_dollars
   --resource-path="$srcdir"
   --template="$template"
+  # Fondo (membrete) en todas las páginas; ruta absoluta (ver arriba).
+  -V "membrete=$membrete_abs"
 )
 
 if [[ "$mode" == "--pdf" || "$mode" == "--ambos" ]]; then

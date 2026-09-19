@@ -70,7 +70,10 @@ Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del bol
      `--from=markdown+tex_math_dollars`) usando la plantilla mínima
      `assets/boletin.tex` (carta, 12 pt, español; la tipografía y la geometría las
      decide LaTeX). El script añade `--resource-path` con el directorio del
-     boletín. Genera también el `.tex` standalone.
+     boletín y **el membrete de fondo** (`-V membrete=<ruta absoluta>`): la
+     plantilla lo pinta en todas las hojas vía el paquete `background` (el asset
+     vive en `.opencode/skills/boletin-latex-pdf/assets/membrete.pdf`). Genera
+     también el `.tex` standalone.
 
 ### Atajos con make
 
@@ -114,6 +117,7 @@ make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas
 - `pdftotext -layout <salida>.pdf -` → acentos y cifras literales (los `\$` del
   `.md` aparecen como `$` en el PDF, p. ej. `$6,000M`, `$160 billones`) y el
   diagrama como `Figura 1: ...` (texto seleccionable = contenido vectorial).
-- `pdfimages -list <salida>.pdf` → **0 imágenes raster** (diagrama 100 % vectorial,
-  gracias a `mutool`). Si se usara `rsvg-convert`, aparecerían máscaras alfa de las
-  cajas de los nodos.
+- `pdfimages -list <salida>.pdf` → **N imágenes raster = N páginas**: exactamente
+  1 por página, la del **membrete** de fondo (2550×3300 @300 dpi); los diagramas
+  son 100 % vectoriales (texto seleccionable) gracias a `mutool`. Si se usara
+  `rsvg-convert`, aparecerían además máscaras alfa de las cajas de los nodos.
