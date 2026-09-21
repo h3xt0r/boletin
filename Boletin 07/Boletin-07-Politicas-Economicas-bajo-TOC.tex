@@ -1,0 +1,229 @@
+% Plantilla mínima de los boletines IES (pandoc --template).
+% Solo carga lo estrictamente necesario por el contenido; la tipografía y la
+% geometría las decide LaTeX (tamaño carta, 12pt, márgenes por defecto).
+
+\documentclass[12pt,letterpaper]{article}
+
+% Codificación y acentos (pdflatex)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Fuente escalable (Latin Modern); evita las bitmap EC de METAFONT
+\usepackage{lmodern}
+
+% Español: títulos y pies ("Figura"), guionado
+\usepackage[spanish]{babel}
+
+% Secciones sin numeración automática (equivalente a \section*{...}): solo se
+% muestran los números que el markdown escribe a mano ("1.", "2.", "A.", ...).
+\setcounter{secnumdepth}{-1}
+
+% Los títulos nunca quedan huérfanos al pie de página: reserva espacio antes
+% de cada sección y, si no cabe el título + unas líneas, salta a la página
+% siguiente. Necesario sobre todo cuando el título precede a una tabla longtable.
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pretocmd{\section}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{3\baselineskip}}{}{}
+
+% Párrafos: penalizar líneas huérfanas (club) y viudas (widow) al cambiar de
+% página: la primera línea de un párrafo no queda sola abajo, ni la última sola arriba.
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Matemáticas (variables como T, I, neq)
+\usepackage{amsmath,amssymb}
+
+% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Fondo: membrete a página completa (carta) en TODAS las hojas. La ruta la
+% inyecta build-boletin.sh con -V membrete=<ruta absoluta>; si la variable no
+% se define, el fondo simplemente no se carga. Ojo: en un template de pandoc
+% los signos de dolar se interpretan como variables de template, incluso en los
+% comentarios; por eso aqui no debe aparecer ningun signo de dolar suelto
+% aparte de la variable membrete del bloque condicional.
+\usepackage{background}
+% NOTA: hay que dar width Y height explicitos (paperwidth x paperheight). Las
+% claves globales de Gin (width=\maxwidth, height=\maxheight, keepaspectratio)
+% fijadas mas arriba para los diagramas se aplican por defecto a todo
+% \includegraphics; con solo width=\paperwidth el fondo quedaria reducido al
+% area de texto (margenes). Con ambas dimensiones explicitas y la misma
+% proporcion carta del membrete, llena la pagina sin deformar ni recortar.
+\backgroundsetup{
+  scale=1,
+  angle=0,
+  opacity=1,
+  contents={\includegraphics[width=\paperwidth,height=\paperheight]{/home/kritt/Git/boletin/.opencode/skills/boletin-latex-pdf/assets/membrete.pdf}}
+}
+
+% Tablas (los boletines pueden traer tablas Markdown)
+\usepackage{longtable,booktabs,array,calc}
+
+% Pies de figura
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+% Listas compactas de Markdown
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Enlaces y destinos (al final, como recomienda hyperref)
+\usepackage{hyperref}
+
+\begin{document}
+
+\hypertarget{termodinuxe1mica-financiera}{%
+\section{Termodinámica Financiera}\label{termodinuxe1mica-financiera}}
+
+\textbf{Análisis Sistémico de Políticas Económicas bajo la Teoría de
+Restricciones (TOC)}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{titular-y-resumen-ejecutivo}{%
+\subsection{1. Titular y Resumen
+Ejecutivo}\label{titular-y-resumen-ejecutivo}}
+
+\textbf{El Verdadero Cuello de Botella del Estado: Entre la Contención
+Contable y el Flujo de Throughput Social}
+
+El debate entre el modelo neoliberal y el actual no es una simple
+disputa ideológica sobre porcentajes del PIB, sino un choque de
+paradigmas sobre cómo se gestiona el sistema económico de una nación.
+Mientras el modelo neoliberal priorizó la optimización local del gasto
+operativo (\(OE\)) y la contención salarial ---destruyendo el mercado
+interno y disparando la deuda pública (\(I\))---, el modelo actual
+utiliza el salario mínimo y la inversión social como variables de
+sincronización para elevar el Throughput (\(T\)) social y reducir la
+pobreza multidimensional.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{diagnuxf3stico-del-sistema-seguxfan-toc}{%
+\subsection{2. Diagnóstico del Sistema según
+TOC}\label{diagnuxf3stico-del-sistema-seguxfan-toc}}
+
+Bajo la Teoría de Restricciones, una economía nacional no es una suma de
+balances contables aislados, sino un flujo continuo interconectado. La
+restricción histórica de México ha radicado en la subutilización de su
+mercado interno debido a la depresión sistemática del poder adquisitivo.
+
+La siguiente Nube de Evaporación expone el conflicto fundamental entre
+ambos modelos de gestión gubernamental:
+
+\begin{figure}
+\centering
+\includegraphics{Diagramas/figura-1.pdf}
+\caption{Nube de Evaporación: Conflicto entre la ortodoxia contable y la
+expansión del Throughput social}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}{%
+\subsection{3. Dicotomía Clave 1: Contabilidad de Costos Tradicional
+vs.~Contabilidad del Throughput
+(TA)}\label{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Contabilidad de Costos Tradicional (Modelo Neoliberal):}
+  Concibe los salarios y el gasto público en salud/educación como puros
+  costos variables y de operación (\(OE\)) que deben minimizarse. Bajo
+  esta lógica, deprimir los salarios mínimos y recortar el gasto social
+  (llevándolo a mínimos históricos como el 2.1\% del PIB en 1996) se
+  percibe erróneamente como un ``ahorro'' y una ganancia de eficiencia.
+  Sin embargo, ignora que asfixiar el poder adquisitivo colapsa el
+  consumo y obliga a rescates financieros masivos (como el Fobaproa) que
+  disparan exponencialmente la Inversión/Inventario (\(I\) en forma de
+  deuda pública).
+\item
+  \textbf{Contabilidad del Throughput (Modelo Actual):} Reconoce que el
+  salario mínimo no es un costo a minimizar, sino una \textbf{señal de
+  sincronización} que acelera la velocidad del flujo monetario y
+  transaccional en el mercado interno. El gasto en salud y bienestar no
+  drena al Estado, sino que eleva la capacidad productiva y la robustez
+  del sistema, maximizando el Throughput (\(T\)) social.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}{%
+\subsection{4. Dicotomía Clave 2: Teoría Monetaria Moderna (MMT)
+vs.~Teoría de Restricciones
+(TOC)}\label{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión MMT:} Analiza la soberanía monetaria enfatizando que un
+  Estado emisor de su propia moneda no enfrenta restricciones
+  financieras nominales ni de ``bancarrota'', sino límites de recursos
+  reales y presión inflacionaria. Sostiene que el gasto público
+  deficitario es el motor necesario para proveer liquidez y empleo
+  cuando el sector privado desinvierte.
+\item
+  \textbf{Visión TOC:} Complementa y acota el análisis al recordar que,
+  aun con soberanía monetaria, \textbf{el dinero es solo un habilitador
+  del flujo físico y productivo}. Si el Estado inyecta recursos o emite
+  moneda sin que exista la capacidad estructural real en la restricción
+  del sistema (infraestructura, seguridad, cadenas de suministro o
+  energía), el resultado no es más valor real, sino inflación y
+  acumulación de ruido e inventarios improductivos. El modelo actual
+  acierta al ligar la expansión del gasto a la recuperación tangible de
+  capacidades de la base (reducción de la pobreza multidimensional),
+  evitando que el recurso se disperse en ineficiencias.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}{%
+\subsection{5. Conclusión y Prescripción Estratégica (5 Pasos de Enfoque
+de
+Goldratt)}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}}
+
+Aplicando los \textbf{5 Pasos de Enfoque} a la gestión macroeconómica
+actual del país:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Identificar la restricción:} El cuello de botella ya no es
+  meramente la falta de poder adquisitivo básico (parcialmente
+  aliviado), sino los rezagos estructurales en \textbf{seguridad
+  pública, certidumbre jurídica, infraestructura logística y
+  productividad sistémica}.
+\item
+  \textbf{Explotar la restricción:} Maximizar el rendimiento de la
+  infraestructura y los programas sociales actuales mediante la
+  digitalización, la simplificación regulatoria y la eficiencia en la
+  ejecución del gasto público.
+\item
+  \textbf{Subordinar todo lo demás a la restricción:} Alinear la
+  política fiscal, educativa y comercial (incluyendo la revisión del
+  T-MEC) para que sirvan de soporte directo a la seguridad territorial y
+  al desarrollo de proveeduría nacional.
+\item
+  \textbf{Elevar la restricción:} Destinar inversión de capital (\(I\))
+  estratégica y masiva a romper los cuellos de botella físicos (energía
+  limpia, polos de desarrollo regional, educación tecnológica y combate
+  frontal a la extorsión y la violencia).
+\item
+  \textbf{Prevenir la inercia:} Evitar caer en la complacencia de los
+  indicadores históricos superados; el entorno global y la
+  relocalización de cadenas (\emph{nearshoring}) exigen mover
+  permanentemente la atención hacia las nuevas restricciones de
+  competitividad internacional.
+\end{enumerate}
+
+\end{document}
