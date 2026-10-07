@@ -90,6 +90,18 @@ Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del bol
      no en `iesencial.com`, cuyo repo es el único que el servidor clona. El
      `deploy.sh` del sitio detecta los diagramas solo (globea
      `boletin/diagramas/*/*.svg`).
+   - **Cierre de la publicación (pasos manuales en el repo del sitio**, los que
+     `deploy.sh` haría solos en producción; el script imprime los comandos
+     exactos como "Pendiente manual"):
+     1. Commit de la copia web y los diagramas:
+        `git -C "$WEB_REPO" add "boletin/YYYY-MM-DD-Boletin-NN: Nombre.md" "boletin/diagramas/<slug>"` y
+        `git -C "$WEB_REPO" commit -m "boletin: publicar YYYY-MM-DD-Boletin-NN: Nombre.md"`.
+     2. **Regenerar el índice del manejador** (sin esto la web no lista el
+        boletín nuevo): `python3 scripts/build-index.py boletin` desde
+        `$WEB_REPO`, y commit de `boletin/index.json`:
+        `git -C "$WEB_REPO" commit -m "boletin: actualizar index.json con Boletin-NN"`.
+     3. Despliegue final al servidor: `scripts/deploy.sh` desde `$WEB_REPO`
+        (rsync al vhost; vuelve a regenerar `index.json`).
 
 ### Atajos con make
 
