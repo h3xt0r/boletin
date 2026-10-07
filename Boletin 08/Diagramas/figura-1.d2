@@ -1,0 +1,47 @@
+# El Falso Dilema de la Educación Financiera y el Flujo Deficitario
+# Nube de evaporación: la arista de conflicto (Ude1 <-> Ude2) crea un ciclo y
+# dagre/elk escalonan los niveles. Se fija el motor TALA y se posicionan los
+# nodos con top/left: Causa1/Causa2 en un nivel y Ude1/Ude2 en el siguiente.
+
+vars: {
+  d2-config: {
+    layout-engine: tala
+  }
+}
+
+direction: down
+
+Causa1: "El OE (costo de vida sistémico)\nsupera al Throughput salarial real" {
+  shape: diamond
+  top: 0
+  left: 0
+}
+
+Causa2: "Se impone optimización local\n(recortar gastos) ignorando\nla restricción de ingresos" {
+  shape: diamond
+  top: 0
+  left: 520
+}
+
+Ude1: "El individuo acumula deuda\ny vive al borde de la insolvencia" {
+  shape: rectangle
+  top: 280
+  left: 40
+}
+
+Ude2: "Los programas masivos de\neducación financiera fracasan" {
+  shape: rectangle
+  top: 280
+  left: 560
+}
+
+Causa1 -> Ude1
+Causa2 -> Ude2
+
+# Conflicto sistémico entre los efectos Ude1 y Ude2
+Ude1 <-> Ude2: "CONFLICTO DE\nCOMPORTAMIENTO\nSISTÉMICO" {
+  style.stroke: "#e53935"
+  style.stroke-dash: 4
+  style.font-color: "#e53935"
+}
+

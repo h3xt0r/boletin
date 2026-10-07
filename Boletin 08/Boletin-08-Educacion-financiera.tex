@@ -1,0 +1,240 @@
+% Plantilla mínima de los boletines IES (pandoc --template).
+% Solo carga lo estrictamente necesario por el contenido; la tipografía y la
+% geometría las decide LaTeX (tamaño carta, 12pt, márgenes por defecto).
+
+\documentclass[12pt,letterpaper]{article}
+
+% Codificación y acentos (pdflatex)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Fuente escalable (Latin Modern); evita las bitmap EC de METAFONT
+\usepackage{lmodern}
+
+% Español: títulos y pies ("Figura"), guionado
+\usepackage[spanish]{babel}
+
+% Secciones sin numeración automática (equivalente a \section*{...}): solo se
+% muestran los números que el markdown escribe a mano ("1.", "2.", "A.", ...).
+\setcounter{secnumdepth}{-1}
+
+% Los títulos nunca quedan huérfanos al pie de página: reserva espacio antes
+% de cada sección y, si no cabe el título + unas líneas, salta a la página
+% siguiente. Necesario sobre todo cuando el título precede a una tabla longtable.
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pretocmd{\section}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{3\baselineskip}}{}{}
+
+% Párrafos: penalizar líneas huérfanas (club) y viudas (widow) al cambiar de
+% página: la primera línea de un párrafo no queda sola abajo, ni la última sola arriba.
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Matemáticas (variables como T, I, neq)
+\usepackage{amsmath,amssymb}
+
+% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Fondo: membrete a página completa (carta) en TODAS las hojas. La ruta la
+% inyecta build-boletin.sh con -V membrete=<ruta absoluta>; si la variable no
+% se define, el fondo simplemente no se carga. Ojo: en un template de pandoc
+% los signos de dolar se interpretan como variables de template, incluso en los
+% comentarios; por eso aqui no debe aparecer ningun signo de dolar suelto
+% aparte de la variable membrete del bloque condicional.
+\usepackage{background}
+% NOTA: hay que dar width Y height explicitos (paperwidth x paperheight). Las
+% claves globales de Gin (width=\maxwidth, height=\maxheight, keepaspectratio)
+% fijadas mas arriba para los diagramas se aplican por defecto a todo
+% \includegraphics; con solo width=\paperwidth el fondo quedaria reducido al
+% area de texto (margenes). Con ambas dimensiones explicitas y la misma
+% proporcion carta del membrete, llena la pagina sin deformar ni recortar.
+\backgroundsetup{
+  scale=1,
+  angle=0,
+  opacity=1,
+  contents={\includegraphics[width=\paperwidth,height=\paperheight]{/home/kritt/Git/boletin/.opencode/skills/boletin-latex-pdf/assets/membrete.pdf}}
+}
+
+% Tablas (los boletines pueden traer tablas Markdown)
+\usepackage{longtable,booktabs,array,calc}
+
+% Pies de figura
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+% Listas compactas de Markdown
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Enlaces y destinos (al final, como recomienda hyperref)
+\usepackage{hyperref}
+
+\begin{document}
+
+\hypertarget{termodinuxe1mica-financiera-08}{%
+\section{TERMODINÁMICA FINANCIERA
+08}\label{termodinuxe1mica-financiera-08}}
+
+\hypertarget{titular-y-resumen-ejecutivo-la-ilusiuxf3n-del-presupuesto-frente-a-la-restricciuxf3n-sistuxe9mica}{%
+\subsection{1. Titular y Resumen Ejecutivo: La Ilusión del Presupuesto
+frente a la Restricción
+Sistémica}\label{titular-y-resumen-ejecutivo-la-ilusiuxf3n-del-presupuesto-frente-a-la-restricciuxf3n-sistuxe9mica}}
+
+\href{https://www.eleconomista.com.mx/finanzaspersonales/educacion-financiera-funciona-dice-foro-economico-mundial-20261007-837387.html}{Educacion
+financiera}
+
+El Foro Económico Mundial (WEF) ha puesto sobre la mesa un debate
+incómodo pero necesario: \textbf{la educación financiera tradicional no
+funciona}. Pretender resolver la precariedad económica y el
+endeudamiento masivo de los hogares mediante talleres de ahorro,
+presupuestos y recortes individuales equivale a intentar mantener
+cientos de pelotas de ping pong bajo el agua en una piscina presurizada.
+El fallo no reside en una supuesta ignorancia del consumidor, sino en
+una falla sistémica: el costo operativo vital (\(OE\)) supera con creces
+el Throughput (\(T\)) salarial real disponible para la base de la
+pirámide económica global.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{diagnuxf3stico-del-sistema-seguxfan-toc}{%
+\subsection{2. Diagnóstico del Sistema según
+TOC}\label{diagnuxf3stico-del-sistema-seguxfan-toc}}
+
+Bajo la óptica de la \textbf{Teoría de Restricciones (TOC)}, el sistema
+socioeconómico actual impone un cuello de botella físico y estructural
+en la generación de ingresos reales para los individuos, mientras que
+los costos de supervivencia (vivienda, salud, alimentos, energía)
+escalan de manera inelástica.
+
+\begin{figure}
+\centering
+\includegraphics{Diagramas/figura-1.pdf}
+\caption{El Falso Dilema de la Educación Financiera y el Flujo
+Deficitario}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Throughput (\(T\)):} La velocidad de creación y captura de
+  riqueza por parte del trabajador está limitada por estructuras de
+  mercado asimétricas y salarios reales estancados.
+\item
+  \textbf{Inventario / Inversión (\(I\)):} Pasivos obligatorios (deudas
+  por consumo básico y compromisos habitacionales) que actúan como
+  anclas financieras inevitables.
+\item
+  \textbf{Gasto de Operación (\(OE\)):} El costo mínimo de existencia en
+  el sistema, impulsado por dinámicas inflacionarias globales que
+  escapan por completo al control del individuo.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}{%
+\subsection{3. Dicotomía Clave 1: Contabilidad de Costos Tradicional
+vs.~Contabilidad del Throughput
+(TA)}\label{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{La Visión de la Contabilidad de Costos Tradicional:} Evalúa al
+  individuo bajo la premisa errónea de la \emph{eficiencia local}. Lo
+  trata como un centro de costos ineficiente al que hay que auditar,
+  recortando gastos hormiga y minimizando partidas individuales (el
+  café, las suscripciones, el ocio). Asume que la salud financiera es
+  una simple ecuación aritmética de disciplina microeconómica, culpando
+  directamente a la víctima del sistema por su falta de ``austeridad''.
+\item
+  \textbf{La Visión de la Contabilidad del Throughput (TA):} Comprende
+  que el \(OE\) (gasto operativo) tiene un límite biológico inferior
+  irreductible: no se puede recortar el costo de subsistencia por debajo
+  de cero sin colapsar al agente. El foco de la TA dictamina que
+  \textbf{la riqueza y la viabilidad no provienen de exprimir el \(OE\)
+  localmente, sino de maximizar el \(T\) y eliminar las restricciones
+  sistémicas} que limitan la capacidad de generar valor real en el
+  mercado. Si el entorno estrangula el flujo de ingresos, cualquier
+  manual de finanzas personales se vuelve operativamente estéril.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}{%
+\subsection{4. Dicotomía Clave 2: Teoría Monetaria Moderna (MMT)
+vs.~Teoría de Restricciones
+(TOC)}\label{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión MMT:} Analiza el problema desde la macroeconomía de la
+  moneda soberana, argumentando que los gobiernos con monopolio de
+  emisión no enfrentan restricciones financieras nominales, sino
+  restricciones reales de recursos (inflación y capacidad instalada).
+  Sostiene que la precariedad de los hogares refleja fallas en la
+  distribución agregada y en la falta de redes de seguridad pública
+  (como un empleo garantizado), postulando que la solución requiere
+  calibración fiscal y monetaria a nivel macro.
+\item
+  \textbf{Visión TOC:} Sostiene que, independientemente de los arreglos
+  monetarios o de la soberanía de emisor, \textbf{la restricción
+  fundamental es siempre física, operativa y de capacidad productiva
+  real}. Si las políticas de inyección de liquidez o los desequilibrios
+  macroeconómicos expanden la masa monetaria sin elevar la capacidad
+  real de producción y oferta de bienes básicos, el resultado neto es el
+  incremento del costo de vida (\(OE\) macroeconómico), lo que pulveriza
+  aún más el poder adquisitivo y acelera el colapso del flujo
+  individual, volviendo obsoletas las intervenciones nominales.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}{%
+\subsection{5. Conclusión y Prescripción Estratégica (5 Pasos de Enfoque
+de
+Goldratt)}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-5-pasos-de-enfoque-de-goldratt}}
+
+Aplicar los 5 Pasos de Enfoque de Eliyahu Goldratt al colapso de la
+educación financiera exige abandonar el falso debate de la culpa
+individual y rediseñar el sistema:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Identificar la Restricción:} Reconocer que el verdadero cuello
+  de botella no es la falta de conocimientos matemáticos del ciudadano,
+  sino la brecha estructural entre el costo de vida (\(OE\)) y la
+  generación de ingresos reales (\(T\)).
+\item
+  \textbf{Explotar la Restricción:} Dejar de perder energía intentando
+  exprimir centavos en presupuestos de supervivencia; aceptar que los
+  márgenes locales están saturados.
+\item
+  \textbf{Subordinar todo lo demás a la Restricción:} Alinear las
+  políticas públicas, educativas y laborales para enfocar los recursos
+  en la expansión de la capacidad productiva y salarial de la base
+  social, en lugar de descargar la responsabilidad en programas de
+  austeridad individual.
+\item
+  \textbf{Elevar la Restricción:} Reestructurar los mercados, incentivar
+  la innovación productiva y romper los cuellos de botella
+  macroeconómicos que deprimen el valor del trabajo humano.
+\item
+  \textbf{Prevenir la Inercia:} Evitar que el sistema caiga de nuevo en
+  el dogma de culpar al eslabón más débil (el consumidor), manteniendo
+  una vigilancia constante sobre los flujos reales de valor y costo de
+  la economía.
+\end{enumerate}
+
+\end{document}
