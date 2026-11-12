@@ -117,6 +117,28 @@ make publicar BOLETIN="Boletin 03"        # copia web + SVG -> iesencial.com (de
 make limpiar                              # borra .svg/.pdf de BOLETIN/Diagramas/
 ```
 
+## Formato del boletín (encabezado y pie)
+
+Todo boletín debe llevar:
+
+- **Encabezado** — justo después del título `# ...`, una línea con **dos
+  enlaces**: la noticia analizada (fuente original) y la página propia donde se
+  publica,
+  `[Publicado en iesencial.com](https://www.iesencial.com/boletin/#art=<nombre-de-archivo>)`,
+  con el nombre de archivo codificado vía `encodeURIComponent` (los `:` → `%3A`
+  y los espacios → `%20`).
+- **Pie** — al final del documento, solo autor y correo, en negritas y en dos
+  párrafos separados por una **línea en blanco** (un salto simple se renderiza
+  como espacio y el correo quedaría junto al nombre), sin separador ni texto
+  adicional:
+
+      **Fis. Héctor Hernández Caso**
+
+      contacto@iesencial.com
+
+  El pie debe estar en la fuente, en el `.md` de trabajo (se regenera con
+  `make trabajo`) y por tanto en el PDF y en la copia web.
+
 ## Convenciones
 
 - Un directorio por boletín: `Boletin 02`, `Boletin 03`, … (con espacio).
