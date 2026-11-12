@@ -96,6 +96,9 @@ en el directorio del boletín.
   guionado y pies "Figura N:").
 - **Pies de figura**: `\usepackage{caption}` + `\captionsetup{font=small,labelfont=bf}`
   en la plantilla (sustituyó al antiguo `assets/editorial.tex`).
+- **Figuras en su sitio**: `\usepackage{float}` + `\floatplacement{figure}{H}` en la
+  plantilla colocan cada diagrama donde el Markdown lo pone, sin páginas flotantes
+  con una sola figura ni títulos separados de su diagrama.
 - **Secciones sin numeración automática**: `\setcounter{secnumdepth}{-1}` en la
   plantilla (equivale a `\section*`): los títulos solo muestran los números que el
   markdown escribe a mano ("1. Titular…", "3. Contabilidad…"), evitando el doble

@@ -36,8 +36,12 @@
 % Matemáticas (variables como T, I, neq)
 \usepackage{amsmath,amssymb}
 
-% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos
+% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos.
+% float + [H] coloca cada figura donde el Markdown la sitúa: evita páginas
+% flotantes con una sola figura y títulos separados de su diagrama.
 \usepackage{graphicx}
+\usepackage{float}
+\floatplacement{figure}{H}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
