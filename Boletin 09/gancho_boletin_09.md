@@ -1,0 +1,1 @@
+El déficit comercial con México no vacía a EE.UU.; lo delata. Para ser la potencia del dólar, *tiene* que importar (Triffin). México no le roba industria: es la extensión productiva que le permite seguir vendiendo. Frenar ese flujo con aranceles no es proteccionismo: es sabotaje al propio sistema.

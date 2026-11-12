@@ -30,6 +30,7 @@ Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del bol
 └── Boletin NN/                         # un directorio por boletín
     ├── YYYY-MM-DD-Boletin-NN: ....md   # FUENTE (```text / ```d2)  — intacta (web)
     ├── Boletin-NN: ....md              # TRABAJO (sin fecha, ligas a Diagramas/*.pdf)
+    ├── gancho_boletin_NN.md            # resumen corto (gancho, contrarian) para redes sociales
     ├── Diagramas/                      # .d2, .svg y .pdf de cada diagrama
     └── Boletin-NN-... .pdf / .tex      # salidas
 ```
@@ -102,6 +103,13 @@ Cada boletín tiene **dos artefactos**, ambos en la raíz del directorio del bol
         `git -C "$WEB_REPO" commit -m "boletin: actualizar index.json con Boletin-NN"`.
      3. Despliegue final al servidor: `scripts/deploy.sh` desde `$WEB_REPO`
         (rsync al vhost; vuelve a regenerar `index.json`).
+
+5. **Gancho para redes sociales** — genera un resumen corto (gancho, tono
+   contrarian) a partir de la fuente, pensado como anzuelo para publicación en
+   redes. Guárdalo en el directorio del boletín como `gancho_boletin_NN.md`
+   (con `NN` igual al número del boletín, p. ej. `gancho_boletin_09.md`). Debe
+   condensar la tesis contrarian del boletín en pocas líneas, sin repetir el
+   titular completo ni el cuerpo.
 
 ### Atajos con make
 
