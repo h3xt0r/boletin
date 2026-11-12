@@ -1,0 +1,48 @@
+# Nube de Evaporación: El Dilema de Triffin y el Déficit Bilateral en Norteamérica
+vars: {
+  d2-config: {
+    layout-engine: tala
+    pad: 10
+  }
+}
+
+direction: down
+
+A: "Sostener la hegemonía económica,\nmonetaria e industrial\nde Norteamérica" {
+  shape: rectangle
+  top: 0
+  left: 150
+}
+
+B: "Corregir el déficit comercial\nbilateral y proteger la\nsolvencia del dólar (Triffin)" {
+  shape: rectangle
+  top: 140
+  left: 0
+}
+
+C: "Maximizar el Throughput\nregional y evitar un colapso\nde suministro (Bardi)" {
+  shape: rectangle
+  top: 140
+  left: 330
+}
+
+D: "Imponer aranceles y\nrestringir las importaciones\ndesde México" {
+  shape: rectangle
+  top: 280
+  left: 0
+}
+
+D_prima: "Subordinar la política comercial\na la integración física y\nlogística binacional" {
+  shape: rectangle
+  top: 280
+  left: 330
+}
+
+A -> B: "Para asegurar"
+A -> C: "Para asegurar"
+B -> D: "Para lograrlo, se exige"
+C -> D_prima: "Para lograrlo, se requiere"
+D <-> D_prima: "CONFLICTO\nSISTÉMICO" {
+  style.stroke: "#e53935"
+  style.stroke-dash: 4
+}

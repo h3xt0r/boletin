@@ -1,0 +1,353 @@
+% Plantilla mínima de los boletines IES (pandoc --template).
+% Solo carga lo estrictamente necesario por el contenido; la tipografía y la
+% geometría las decide LaTeX (tamaño carta, 12pt, márgenes por defecto).
+
+\documentclass[12pt,letterpaper]{article}
+
+% Codificación y acentos (pdflatex)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Fuente escalable (Latin Modern); evita las bitmap EC de METAFONT
+\usepackage{lmodern}
+
+% Español: títulos y pies ("Figura"), guionado
+\usepackage[spanish]{babel}
+
+% Secciones sin numeración automática (equivalente a \section*{...}): solo se
+% muestran los números que el markdown escribe a mano ("1.", "2.", "A.", ...).
+\setcounter{secnumdepth}{-1}
+
+% Los títulos nunca quedan huérfanos al pie de página: reserva espacio antes
+% de cada sección y, si no cabe el título + unas líneas, salta a la página
+% siguiente. Necesario sobre todo cuando el título precede a una tabla longtable.
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pretocmd{\section}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{3\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{3\baselineskip}}{}{}
+
+% Párrafos: penalizar líneas huérfanas (club) y viudas (widow) al cambiar de
+% página: la primera línea de un párrafo no queda sola abajo, ni la última sola arriba.
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Matemáticas (variables como T, I, neq)
+\usepackage{amsmath,amssymb}
+
+% Imágenes: los diagramas PDF se ajustan al ancho de caja, sin anchos fijos.
+% float + [H] coloca cada figura donde el Markdown la sitúa: evita páginas
+% flotantes con una sola figura y títulos separados de su diagrama.
+\usepackage{graphicx}
+\usepackage{float}
+\floatplacement{figure}{H}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Fondo: membrete a página completa (carta) en TODAS las hojas. La ruta la
+% inyecta build-boletin.sh con -V membrete=<ruta absoluta>; si la variable no
+% se define, el fondo simplemente no se carga. Ojo: en un template de pandoc
+% los signos de dolar se interpretan como variables de template, incluso en los
+% comentarios; por eso aqui no debe aparecer ningun signo de dolar suelto
+% aparte de la variable membrete del bloque condicional.
+\usepackage{background}
+% NOTA: hay que dar width Y height explicitos (paperwidth x paperheight). Las
+% claves globales de Gin (width=\maxwidth, height=\maxheight, keepaspectratio)
+% fijadas mas arriba para los diagramas se aplican por defecto a todo
+% \includegraphics; con solo width=\paperwidth el fondo quedaria reducido al
+% area de texto (margenes). Con ambas dimensiones explicitas y la misma
+% proporcion carta del membrete, llena la pagina sin deformar ni recortar.
+\backgroundsetup{
+  scale=1,
+  angle=0,
+  opacity=1,
+  contents={\includegraphics[width=\paperwidth,height=\paperheight]{/home/kritt/Git/boletin/.opencode/skills/boletin-latex-pdf/assets/membrete.pdf}}
+}
+
+% Tablas (los boletines pueden traer tablas Markdown)
+\usepackage{longtable,booktabs,array,calc}
+
+% Pies de figura
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+% Listas compactas de Markdown
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Enlaces y destinos (al final, como recomienda hyperref)
+\usepackage{hyperref}
+
+\begin{document}
+
+\hypertarget{termodinuxe1mica-financiera-09-duxe9ficit-comercial-muxe9xico-ee.-uu.}{%
+\section{Termodinámica Financiera 09: Déficit Comercial México-EE.
+UU.}\label{termodinuxe1mica-financiera-09-duxe9ficit-comercial-muxe9xico-ee.-uu.}}
+
+\href{https://www.eleconomista.com.mx/empresas/aumenta-deficit-comercial-estados-unidos-mexico-septiembre-20261109-842947.html}{Déficit
+comercial México-EE. UU.} ·
+\href{https://www.iesencial.com/boletin/\#art=2026-11-12-Boletin-09\%3A\%20Deficit\%20comercial\%20mex-usa.md}{Publicado
+en iesencial.com}
+
+\hypertarget{titular-y-resumen-ejecutivo}{%
+\subsection{1. Titular y Resumen
+Ejecutivo}\label{titular-y-resumen-ejecutivo}}
+
+\textbf{Aumenta 26.1\% el déficit comercial de Estados Unidos con México
+a septiembre de 2026: La trampa sistémica del dólar, la fragilidad del
+nearshoring y la ilusión de la eficiencia local.}
+
+Mientras la política económica estadounidense interpreta el déficit
+bilateral de \$184,019M (con exportaciones mexicanas de \$481,586M) como
+una hemorragia industrial que exige aranceles, el análisis sistémico
+revela una realidad opuesta: Estados Unidos opera atrapado en el
+\textbf{Dilema de Triffin}, exportando dólares para sostener su
+hegemonía financiera a costa de su capacidad física. Al integrar la
+\textbf{Teoría de Restricciones (TOC)} con el \textbf{Efecto Séneca} de
+Ugo Bardi, demostramos que restringir este flujo mediante barreras
+comerciales no reindustrializa a Norteamérica, sino que empuja a la
+cadena de suministro regional hacia un precipicio de colapso no lineal.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{marco-teuxf3rico-la-truxedada-sistuxe9mica-del-colapso-y-el-enfoque}{%
+\subsection{2. Marco Teórico: La Tríada Sistémica del Colapso y el
+Enfoque}\label{marco-teuxf3rico-la-truxedada-sistuxe9mica-del-colapso-y-el-enfoque}}
+
+Para comprender la verdadera naturaleza del desequilibrio comercial
+entre México y Estados Unidos, integramos tres lentes fundamentales bajo
+la arquitectura lógica de la \textbf{Teoría de Restricciones (TOC)}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Robert Triffin (La Contradicción Monetaria Estructural):} El
+  Dilema de Triffin establece que el país emisor de la moneda de reserva
+  global (el dólar estadounidense) está obligado a proveer liquidez al
+  sistema mundial incurriendo en déficits comerciales crónicos. Sin
+  embargo, la acumulación perpetua de pasivos externos erosiona su base
+  manufacturera interna y la confianza en su solvencia a largo plazo.
+  Bajo la TOC, el diseño monetario global fuerza a que la liquidez
+  financiera opere estructuralmente en contra de la capacidad física de
+  producción local (\(I\) y \(OE\)).
+\item
+  \textbf{Ugo Bardi (La Dinámica Temporal y el Efecto Séneca):} El
+  Efecto Séneca demuestra que los sistemas complejos sometidos a estrés
+  acumulado y rendimientos decrecientes no declinan de forma lineal o
+  gradual. Mientras el crecimiento y la integración comercial son
+  procesos lentos y laboriosos, el colapso ante un choque exógeno
+  ---como una guerra arancelaria o una ruptura logística--- es abrupto,
+  asimétrico y acelerado (``el crecimiento es lento, pero la ruina es
+  rápida'').
+\item
+  \textbf{Eliyahu M. Goldratt (El Eje de Control de Sistemas
+  Complejos):} La Teoría de Restricciones trasciende la mera
+  optimización de valor para erigirse como la ley fundamental de la
+  dinámica de sistemas complejos: \textbf{el desempeño global de
+  cualquier sistema interdependiente no está determinado por la suma de
+  sus eficiencias locales, sino que está gobernado y controlado por un
+  único elemento (la restricción o cuello de botella)}. Intentar
+  optimizar subcomponentes aislados ---como forzar el equilibrio de la
+  balanza bilateral--- sin elevar la capacidad de la restricción real
+  del sistema destruye el rendimiento total y precipita la caída en la
+  curva de Séneca.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{diagnuxf3stico-del-sistema-seguxfan-toc}{%
+\subsection{3. Diagnóstico del Sistema según
+TOC}\label{diagnuxf3stico-del-sistema-seguxfan-toc}}
+
+El sistema bajo análisis es el \textbf{bloque industrial y monetario de
+Norteamérica}. El flujo real revela que México no actúa como un
+extractor de riqueza de Estados Unidos, sino como la válvula de escape y
+extensión productiva que permite a las corporaciones norteamericanas
+sostener su oferta ante la escasez de capacidad manufacturera interna.
+
+\hypertarget{identificaciuxf3n-de-la-restricciuxf3n-y-paruxe1metros-t-i-oe}{%
+\subsubsection{\texorpdfstring{Identificación de la Restricción y
+Parámetros (\(T\), \(I\),
+\(OE\))}{Identificación de la Restricción y Parámetros (T, I, OE)}}\label{identificaciuxf3n-de-la-restricciuxf3n-y-paruxe1metros-t-i-oe}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{La Restricción del Sistema (Cuello de Botella):} La
+  \textbf{capacidad física, energética y logística integrada de
+  Norteamérica} (infraestructura transfronteriza, aduanas, generación
+  eléctrica y mano de obra técnica calificada) para transformar insumos
+  en bienes finales competitivos frente a los bloques asiáticos.
+\item
+  \textbf{Throughput (\(T\)):} La tasa a la que el bloque norteamericano
+  genera dinero fresco mediante ventas reales al consumidor final. El
+  incremento de 20.7\% en las importaciones estadounidenses de bienes
+  mexicanos ---con el equipo de cómputo como principal impulsor---
+  representa el flujo vital que mantiene vivo el Throughput de las
+  empresas estadounidenses.
+\item
+  \textbf{Inversión / Inventario (\(I\)):} Todo el capital inmovilizado
+  en plantas industriales, relocalización de cadenas de suministro
+  (nearshoring), inventarios en tránsito y los propios bonos del Tesoro
+  estadounidense acumulados en el exterior como contrapartida del
+  déficit comercial (Dilema de Triffin).
+\item
+  \textbf{Gasto de Operación (\(OE\)):} El costo sistémico necesario
+  para convertir el inventario en Throughput. Los aranceles, las
+  fricciones aduanales y la duplicación de cadenas productivas inflan
+  artificialmente el \(OE\) sin añadir un solo dólar de valor al
+  sistema.
+\end{itemize}
+
+\hypertarget{procesos-de-pensamiento-el-dilema-sistuxe9mico-de-norteamuxe9rica}{%
+\subsubsection{Procesos de Pensamiento: El Dilema Sistémico de
+Norteamérica}\label{procesos-de-pensamiento-el-dilema-sistuxe9mico-de-norteamuxe9rica}}
+
+\begin{figure}
+\centering
+\includegraphics{Diagramas/figura-1.pdf}
+\caption{Nube de Evaporación: El Dilema de Triffin y el Déficit
+Bilateral en Norteamérica}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}{%
+\subsection{4. Dicotomía Clave 1: Contabilidad de Costos Tradicional
+vs.~Contabilidad del Throughput
+(TA)}\label{dicotomuxeda-clave-1-contabilidad-de-costos-tradicional-vs.-contabilidad-del-throughput-ta}}
+
+La lectura política del déficit de \$184,019M está secuestrada por los
+principios obsoletos de la \textbf{Contabilidad de Costos}, que asume
+que cada eslabón de una cadena debe mostrar un saldo positivo aislado
+para que el conjunto sea rentable.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{La Visión de la Contabilidad de Costos Tradicional:} Observa
+  la balanza comercial bilateral como un estado de resultados estático.
+  Concluye que importar \$481,586M desde México equivale a una ``pérdida
+  neta'' de empleos y capital. Su receta es la optimización local:
+  cerrar la frontera mediante aranceles para forzar que la manufactura
+  regrese a territorio estadounidense, asumiendo que reducir el déficit
+  bilateral mejorará automáticamente el desempeño nacional.
+\item
+  \textbf{La Visión de la Contabilidad del Throughput (TA):} Demuestra
+  que en sistemas altamente interdependientes, \textbf{la suma de los
+  óptimos locales no es igual al óptimo global}. Gran parte de las
+  importaciones desde México son bienes intermedios y manufactura
+  integrada cuya producción dentro de EE. UU. es físicamente inviable a
+  corto plazo debido a la escasez de mano de obra y costos energéticos.
+  Estrangular el flujo proveniente de México mediante aranceles eleva el
+  \(OE\) y paraliza las líneas de ensamblaje finales en EE. UU.,
+  destruyendo el Throughput (\(T\)) de todo el sistema y detonando el
+  \textbf{Efecto Séneca}: una caída abrupta en la disponibilidad de
+  bienes y un repunte inflacionario severo.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}{%
+\subsection{5. Dicotomía Clave 2: Teoría Monetaria Moderna (MMT)
+vs.~Teoría de Restricciones
+(TOC)}\label{dicotomuxeda-clave-2-teoruxeda-monetaria-moderna-mmt-vs.-teoruxeda-de-restricciones-toc}}
+
+El debate sobre el déficit comercial estadounidense suele polarizarse
+entre quienes temen la insolvencia fiscal y quienes proclaman la
+omnipotencia del emisor monetario.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Visión de la Teoría Monetaria Moderna (MMT):} Argumenta que
+  Estados Unidos, al ser el emisor monopolista del dólar en un régimen
+  de tipo de cambio flotante, no enfrenta ninguna restricción financiera
+  nominal. Bajo la identidad de balances sectoriales, el déficit
+  comercial de EE. UU. es simplemente el superávit de ahorro en dólares
+  del resto del mundo (incluido México). Para la MMT, EE. UU. obtiene
+  bienes reales a cambio de asientos contables digitales, y el único
+  límite real es la inflación interna.
+\item
+  \textbf{Visión de la Teoría de Restricciones (TOC) y el Límite
+  Físico:} La TOC coincide con la MMT en que el dinero es una creación
+  contable y no la restricción primaria, pero advierte su punto ciego:
+  \textbf{el dinero es solo un habilitador; la restricción física y
+  termodinámica siempre manda}. Inyectar liquidez o mantener el consumo
+  mediante emisión monetaria sin elevar la capacidad física de la
+  restricción real no genera riqueza, sino que infla el Inventario
+  especulativo (\(I\)) y el ruido sistémico.
+\item
+  \textbf{Contraste Crítico con Triffin y Bardi:} Mientras la MMT asume
+  que el mundo aceptará dólares indefinidamente sin fricciones, el
+  \textbf{Dilema de Triffin} señala que la desindustrialización física
+  corroe eventualmente el respaldo real de esa moneda. Cuando la
+  capacidad productiva interna se atrofia, el sistema pierde
+  resiliencia; si un choque arancelario o geopolítico corta el
+  suministro externo (México), la emisión de dólares no puede
+  materializar fábricas ni energía de la noche a la mañana, precipitando
+  al sistema por el \textbf{acantilado de Séneca}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-los-5-pasos-de-enfoque-de-goldratt}{%
+\subsection{6. Conclusión y Prescripción Estratégica: Los 5 Pasos de
+Enfoque de
+Goldratt}\label{conclusiuxf3n-y-prescripciuxf3n-estratuxe9gica-los-5-pasos-de-enfoque-de-goldratt}}
+
+\emph{``Dime cómo me mides y te diré cómo me comporto.''} Si Estados
+Unidos continúa midiendo su éxito económico mediante la balanza
+comercial bilateral, ejecutará políticas autodestructivas que acelerarán
+el colapso de su propia cadena de suministro. Para gobernar este sistema
+complejo sin caer en el precipicio de Séneca, la estrategia binacional
+debe ejecutarse bajo los \textbf{5 Pasos de Enfoque de Goldratt}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{IDENTIFICAR la restricción del sistema:} Abandonar la obsesión
+  por el déficit contable bilateral. Reconocer que el verdadero cuello
+  de botella de Norteamérica es su \textbf{capacidad física integrada}
+  (infraestructura energética, cruces fronterizos, logística ferroviaria
+  y talento técnico) para producir bienes complejos a escala global.
+\item
+  \textbf{EXPLOTAR la restricción:} Maximizar el rendimiento de la
+  infraestructura transfronteriza existente sin esperar nuevas
+  inversiones masivas. Esto implica eliminar fricciones burocráticas,
+  digitalizar al 100\% los despachos aduaneros, unificar estándares
+  regulatorios y garantizar suministro eléctrico ininterrumpido a los
+  corredores industriales actuales del norte de México y el sur de EE.
+  UU.
+\item
+  \textbf{SUBORDINAR todo lo demás a la decisión anterior:} Subordinar
+  la política arancelaria, fiscal y monetaria al flujo continuo de la
+  cadena de suministro norteamericana. Ninguna medida proteccionista
+  local debe implementarse si interrumpe o encarece los insumos críticos
+  que alimentan la capacidad productiva del bloque.
+\item
+  \textbf{ELEVAR la restricción del sistema:} Invertir de forma
+  coordinada el capital atrapado en activos financieros improductivos
+  (\(I\)) hacia la expansión física de la capacidad energética (redes de
+  transmisión, energía limpia y gas natural), puertos de entrada, vías
+  férreas y formación técnica binacional. Elevar este cuello de botella
+  es la única vía real para reducir la dependencia de Asia sin destruir
+  el Throughput.
+\item
+  \textbf{PREVENIR LA INERCIA (Volver al Paso 1):} Una vez que la
+  integración logística y energética de Norteamérica deje de ser el
+  cuello de botella, la restricción se desplazará hacia la innovación
+  tecnológica o la disponibilidad de materias primas críticas. Las
+  instituciones deben evitar que las políticas diseñadas para resolver
+  la crisis comercial de 2026 se conviertan en dogmas rígidos que
+  asfixien la siguiente etapa de evolución sistémica.
+\end{enumerate}
+
+\textbf{Fis. Héctor Hernández Caso} contacto@iesencial.com
+
+\end{document}
